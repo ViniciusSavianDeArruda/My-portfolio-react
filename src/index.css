@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: #080808;
+    color: #00FF41;
+    font-family: 'Share Tech Mono', monospace;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: #080808; }
+  ::-webkit-scrollbar-thumb { background: #00FF41; }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.025) 2px,
+      rgba(0, 0, 0, 0.025) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+}
+
+@layer utilities {
+  .glow {
+    text-shadow: 0 0 8px #00FF41, 0 0 20px #00FF41, 0 0 40px #00AA2A;
+  }
+  .glow-sm {
+    text-shadow: 0 0 6px #00FF41;
+  }
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(0,255,65,.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,255,65,.018) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  .nav-underline {
+    position: relative;
+  }
+  .nav-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #00FF41;
+    transition: width 0.3s;
+  }
+  .nav-underline:hover::after,
+  .nav-underline.active::after {
+    width: 100%;
+  }
+  /* Icon filter: mono green — brighter for readability */
+  .icon-mono {
+    filter: brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(80deg) brightness(0.7);
+    transition: filter 0.3s, transform 0.3s;
+  }
+  .icon-mono:hover {
+    filter: brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(80deg) brightness(1);
+    transform: scale(1.15) translateY(-3px);
+  }
+}
