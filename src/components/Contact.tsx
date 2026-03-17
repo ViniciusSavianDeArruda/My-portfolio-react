@@ -9,15 +9,12 @@ export default function Contact() {
 
         <p className="font-mono text-[#bbf7d0] leading-[1.9] mx-auto max-w-[480px] text-[0.88rem] mt-8">
           Aberto para novos projetos, oportunidades e colaborações.
-          <br />
-          <span className="text-[#4ade80]">Respondo em até 24h.</span>
         </p>
-
         <a
-          href="mailto:seuemail@email.com"
+          href="mailto:arrudavinicius283@gmail.com"
           className="inline-block font-orbitron text-[clamp(0.9rem,2.2vw,1.4rem)] text-[#00FF41] no-underline mt-8 mb-2 tracking-[0.04em] glow-sm transition-all duration-300 hover:[text-shadow:0_0_15px_#00FF41,0_0_30px_#00FF41]"
         >
-          seuemail@email.com
+          arrudavinicius283@gmail.com
         </a>
 
         <div className="flex justify-center gap-4 flex-wrap mt-9">

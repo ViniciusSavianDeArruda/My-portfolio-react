@@ -7,8 +7,7 @@ export interface Project {
   statusColor: string
   github: string
   demo?: string
-  preview: string   
-  url: string       
+  preview: string       
 }
 
 export interface Skill {
@@ -27,48 +26,44 @@ export interface ContactLink {
   href: string
 }
 
-//Projects 
 export const PROJECTS: Project[] = [
   {
     id: '01',
-    name: 'ProjectAlpha',
-    desc: 'Plataforma SaaS full stack com autenticação, dashboard analítico e integração de pagamentos. Arquitetura escalável e deploy automatizado na AWS.',
-    tech: ['Next.js', 'Node.js', 'PostgreSQL', 'Stripe', 'Docker', 'AWS'],
+    name: 'Fitnnes AI – Plataforma de Gestão de Treinos',
+    desc: 'Plataforma full stack para gerenciamento de treinos com criação de planos, acompanhamento de exercícios e estatísticas de desempenho. O sistema conta com geração de sugestões de treino utilizando IA da OpenAI, além de autenticação segura e arquitetura modular.',
+    tech: ['Next.Js', 'TypeScript','Tailwind CSS', 'Node.js', 'Prisma', 'Fastify', 'PostgreSQL', 'Docker'],
     status: 'PRODUCTION',
-    statusColor: '#00FF41',
-    github: '#',
-    demo: '#',
-    preview: 'https://placehold.co/680x383/060f0a/00FF41?text=ProjectAlpha+%E2%80%94+SaaS+Dashboard&font=monospace',
-    url: 'projectalpha.app',
+    statusColor: '#0088FF',
+    github: 'https://github.com/ViniciusSavianDeArruda/Fitnnes-frontend',
+    demo: 'https://app.fitnnesapp.online',
+    preview: 'fitAi.png',
   },
   {
     id: '02',
-    name: 'API Gateway',
-    desc: 'Microsserviço de gateway com rate limiting, cache Redis e monitoramento em tempo real. Suporta 10k+ requisições/min com latência média abaixo de 12ms.',
-    tech: ['Node.js', 'Redis', 'TypeScript', 'Docker', 'Prometheus'],
+    name: 'Gestão de Acervo - Museu treze de maio',
+    desc: 'Sistema desktop para gerenciamento completo de biblioteca e acervo histórico. Desenvolvido em Java com JavaFX, SQL Server e arquitetura MVC. Inclui controle de empréstimos, catalogação e auditoria de operações.',
+    tech: ['Java', 'JavaFx', 'SQL Server', 'MVC'],
     status: 'OPEN SOURCE',
-    statusColor: '#0088FF',
-    github: '#',
-    preview: 'https://placehold.co/680x383/060f0a/00FF41?text=API+Gateway+%E2%80%94+10k%2B+req%2Fmin&font=monospace',
-    url: 'github.com/seuuser/api-gateway',
+    statusColor: '#00FF41',
+    github: 'https://github.com/ViniciusSavianDeArruda/SistemaDeGerenciamentoDeAcervo_MuseuTrezeDeMaio',
+    demo: 'https://www.youtube.com/watch?v=h1TVhw8w6M8',
+    preview: 'public/FotoMuseu.png',
   },
   {
     id: '03',
-    name: 'DataSync CLI',
-    desc: 'Ferramenta CLI para sincronização de bancos de dados entre ambientes de desenvolvimento, staging e produção com rollback automático.',
-    tech: ['Python', 'PostgreSQL', 'MongoDB', 'Docker', 'Click'],
+    name: '',
+    desc: '',
+    tech: [''],
     status: 'EM DEV',
     statusColor: '#FFAA00',
-    github: '#',
-    preview: 'https://placehold.co/680x383/060f0a/00FF41?text=DataSync+CLI+%E2%80%94+Em+Desenvolvimento&font=monospace',
-    url: 'github.com/seuuser/datasync',
+    github: '',
+    preview: '#',
   },
 ]
 
-//Skills
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    label: '// FRONTEND',
+    label: ' FRONTEND',
     skills: [
       { name: 'React',      icon: 'react' },
       { name: 'Next.js',    icon: 'nextdotjs' },
@@ -79,48 +74,36 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     ],
   },
   {
-    label: '// BACKEND',
+    label: ' BACKEND',
     skills: [
       { name: 'Node.js',  icon: 'nodedotjs' },
-      { name: 'Express',  icon: 'express' },
       { name: 'Python',   icon: 'python' },
       { name: 'FastAPI',  icon: 'fastapi' },
-      { name: 'GraphQL',  icon: 'graphql' },
       { name: 'Prisma',   icon: 'prisma' },
     ],
   },
   {
-    label: '// DATABASE',
+    label: ' DATABASE',
     skills: [
       { name: 'PostgreSQL', icon: 'postgresql' },
-      { name: 'MongoDB',    icon: 'mongodb' },
-      { name: 'Redis',      icon: 'redis' },
       { name: 'MySQL',      icon: 'mysql' },
-      { name: 'SQLite',     icon: 'sqlite' },
-      { name: 'Firebase',   icon: 'firebase' },
     ],
   },
   {
-    label: '// DEVOPS & TOOLS',
+    label: ' DEVOPS & TOOLS',
     skills: [
       { name: 'Docker',  icon: 'docker' },
-      { name: 'K8s',     icon: 'kubernetes' },
-      { name: 'AWS',     icon: 'amazonwebservices' },
       { name: 'Git',     icon: 'git' },
       { name: 'GitHub',  icon: 'github' },
-      { name: 'Linux',   icon: 'linux' },
     ],
   },
 ]
 
-//Contact
 export const CONTACT_LINKS: ContactLink[] = [
-  { label: 'GITHUB',      value: 'github.com/seuuser',      href: 'https://github.com/seuuser' },
-  { label: 'LINKEDIN',    value: 'linkedin.com/in/seuuser', href: 'https://linkedin.com/in/seuuser' },
-  { label: 'TWITTER / X', value: '@seuhandle',              href: 'https://twitter.com/seuhandle' },
+  { label: 'GITHUB',      value: 'github.com/Arruda',      href: 'https://github.com/ViniciusSavianDeArruda' },
+  { label: 'LINKEDIN',    value: 'linkedin.com/in/Vinicius', href: 'https://linkedin.com/in/arrudavinicius' },
 ]
 
-// About table 
 export const ABOUT_ROWS = [
   { label: 'NOME',          value: 'Vinicius Arruda' },
   { label: 'FUNÇÃO',        value: 'Full Stack Developer' },

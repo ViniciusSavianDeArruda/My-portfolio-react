@@ -54,7 +54,7 @@ export default function Projects() {
   function showPreview(e: React.MouseEvent<HTMLDivElement>, p: typeof PROJECTS[0]) {
     if (hideTimer.current) clearTimeout(hideTimer.current)
     const { left, top } = calcPos((e.currentTarget as HTMLDivElement).getBoundingClientRect())
-    setPreview({ visible: true, x: left, y: top, img: p.preview, title: p.name, url: p.url, status: p.status, statusColor: p.statusColor })
+    setPreview({ visible: true, x: left, y: top, img: p.preview, title: p.name, url: p.github, status: p.status, statusColor: p.statusColor })
   }
 
   function updatePos(e: React.MouseEvent<HTMLDivElement>) {

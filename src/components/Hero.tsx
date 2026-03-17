@@ -34,7 +34,6 @@ export default function Hero() {
     >
       <MatrixCanvas />
       <div className="relative z-10 px-[clamp(1.5rem,5vw,4rem)] py-16 max-w-[960px]">
-        {/* Prompt */}
         <p className="font-mono text-[0.82rem] text-[#4ade80] mb-5">
           <span className="text-[#00FF41]">root@portfolio</span>
           :<span className="text-[#60a5fa]">~</span>
@@ -43,15 +42,12 @@ export default function Hero() {
           <span className="text-[#86efac]"> ./init.sh</span>
         </p>
 
-        {/* Name */}
         <h1 className="font-orbitron font-black text-[clamp(2rem,7vw,5.2rem)] leading-[1.05] mb-3 tracking-[-0.01em] text-[#00FF41] glow animate-glitch">
           Vinicius Arruda
         </h1>
 
-        {/* Role — typewriter */}
         <RoleTypewriter />
 
-        {/* Typing lines */}
         <div className="font-mono text-[clamp(0.8rem,1.4vw,0.9rem)] leading-[2.1] mb-12">
           <div className="opacity-0 animate-[fadeUp_0.5s_ease_0.5s_forwards]">
             <span className="text-[#86efac]">$ </span>
@@ -75,7 +71,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* CTA */}
         <div className="flex gap-4 flex-wrap mb-16">
           <a
             href="https://github.com/ViniciusSavianDeArruda"

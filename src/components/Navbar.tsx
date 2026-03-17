@@ -44,12 +44,10 @@ export default function Navbar() {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[rgba(8,8,8,0.95)] backdrop-blur-md border-b border-[#002200] h-[58px] flex items-center justify-between px-[clamp(1.5rem,5vw,3.5rem)]">
-        {/* Logo */}
         <span className="font-orbitron text-base font-bold tracking-widest text-[#00FF41] glow-sm">
           &lt;DEV/&gt;
         </span>
 
-        {/* Desktop links */}
         <div className="hidden md:flex gap-[clamp(0.8rem,2.5vw,2rem)]">
           {NAV_ITEMS.map((id) => (
             <button
@@ -64,7 +62,6 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Hamburger button — mobile only */}
         <button
           onClick={() => setMenuOpen((v) => !v)}
           className="md:hidden flex flex-col justify-center items-center gap-[5px] w-8 h-8 bg-transparent border-none cursor-pointer p-0"
@@ -94,7 +91,6 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu overlay */}
       <div
         className="fixed inset-0 z-40 md:hidden transition-all duration-300"
         style={{
@@ -104,7 +100,6 @@ export default function Navbar() {
           backdropFilter: 'blur(12px)',
         }}
       >
-        {/* Scanlines */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -112,7 +107,6 @@ export default function Navbar() {
           }}
         />
 
-        {/* Grid bg */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -121,9 +115,8 @@ export default function Navbar() {
           }}
         />
 
-        {/* Menu items */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full gap-2 pt-[58px]">
-          {/* Terminal prompt */}
+          
           <p className="font-mono text-[0.7rem] text-[#4ade80] mb-6 tracking-[0.15em]">
             <span className="text-[#00FF41]">root@portfolio</span>:~$ <span className="animate-blink">_</span>
           </p>
