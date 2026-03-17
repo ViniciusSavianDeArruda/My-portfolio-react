@@ -7,19 +7,15 @@ export default function About() {
       <div className="max-w-[920px] mx-auto">
         <SectionLabel cmd="cat README.md" title="about.exe" />
         <div className="grid grid-cols-[repeat(auto-fit,minmax(290px,1fr))] gap-10">
-          {/* Bio */}
+            {/* bio */} 
           <div className="bg-[#0a0a0a] border border-[#002200] p-8 leading-[1.9] text-[#bbf7d0] text-[0.88rem]">
             <p>
               Olá! Sou um desenvolvedor{' '}
-              <strong className="text-[#00FF41]">Full Stack</strong> apaixonado
-              por criar soluções completas — da arquitetura de banco de dados até
-              a interface do usuário.
+              <strong className="text-[#00FF41]">Full Stack</strong> em formacao, desde o inicio da graduacao venha me apronfundando com foco no ecossistema javaScript. Busco sempre criar solucoes eficientes com foco em qualidade e performance, utilizando as melhores práticas de desenvolvimento.
             </p>
             <p className="mt-4">
-              Tenho experiência construindo aplicações escaláveis, APIs robustas
-              e interfaces intuitivas. Cada linha de código é pensada com foco
-              em <span className="text-[#00FF41]">performance</span>,
-              manutenibilidade e experiência do usuário.
+              Tenho experiência construindo aplicações escaláveis, desde bancdo de dados ate o frontend, com atenção especial a detalhes, segurança e interfaces intuitivas
+              em projetos pessoais e academicos. Estou sempre aberto a novos desafios e oportunidades para crescer como desenvolvedor, contribuindo com projetos inovadores e de impacto real.
             </p>
           </div>
 

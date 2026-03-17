@@ -7,8 +7,8 @@ export interface Project {
   statusColor: string
   github: string
   demo?: string
-  preview: string   // URL da screenshot/GIF — troque pela imagem real
-  url: string       // domínio exibido no rodapé do preview
+  preview: string   
+  url: string       
 }
 
 export interface Skill {
@@ -27,7 +27,7 @@ export interface ContactLink {
   href: string
 }
 
-// ── Projects ──────────────────────────────────────────────────
+//Projects 
 export const PROJECTS: Project[] = [
   {
     id: '01',
@@ -65,7 +65,7 @@ export const PROJECTS: Project[] = [
   },
 ]
 
-// ── Skills ────────────────────────────────────────────────────
+//Skills
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     label: '// FRONTEND',
@@ -113,20 +113,19 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   },
 ]
 
-// ── Contact ───────────────────────────────────────────────────
+//Contact
 export const CONTACT_LINKS: ContactLink[] = [
   { label: 'GITHUB',      value: 'github.com/seuuser',      href: 'https://github.com/seuuser' },
   { label: 'LINKEDIN',    value: 'linkedin.com/in/seuuser', href: 'https://linkedin.com/in/seuuser' },
   { label: 'TWITTER / X', value: '@seuhandle',              href: 'https://twitter.com/seuhandle' },
 ]
 
-// ── About table ───────────────────────────────────────────────
+// About table 
 export const ABOUT_ROWS = [
-  { label: 'NOME',          value: 'Seu Nome Aqui' },
+  { label: 'NOME',          value: 'Vinicius Arruda' },
   { label: 'FUNÇÃO',        value: 'Full Stack Developer' },
-  { label: 'LOCALIZAÇÃO',   value: 'Brasil 🇧🇷' },
-  { label: 'EXPERIÊNCIA',   value: 'X anos de código' },
+  { label: 'LOCALIZAÇÃO',   value: 'Brasil 🇧🇷,Rio Grande do Sul - Santa maria ' },
+  { label: 'EXPERIÊNCIA',   value: '+1 ano de código' },
   { label: 'STATUS',        value: '✓ Disponível', highlight: true },
-  { label: 'ESPECIALIDADE', value: 'Web / APIs / Cloud' },
-  { label: 'IDIOMAS',       value: 'PT-BR / EN' },
+  { label: 'ESPECIALIDADE', value: 'Web / BackEnd / Bd' },
 ]

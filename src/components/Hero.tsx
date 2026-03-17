@@ -1,18 +1,19 @@
-import MatrixCanvas from './MatrixCanvas'
-import { useState, useEffect } from 'react'
+import MatrixCanvas from './MatrixCanvas' // biblioteca para o efeito de fundo estilo "Matrix"
+import { useState, useEffect } from 'react' 
 
+//funcao para efeito digitacao da hero
 function RoleTypewriter() {
   const text = 'Full Stack Developer'
   const [displayed, setDisplayed] = useState('')
-
+  // time para o efeito de digitação
   useEffect(() => {
     let i = 0
     const timer = setTimeout(function type() {
       i++
       setDisplayed(text.slice(0, i))
-      if (i < text.length) setTimeout(type, 80)
-    }, 600)
-    return () => clearTimeout(timer)
+      if (i < text.length) setTimeout(type, 80) // se o i for menor que o tamanho do texto, continua digitando
+    }, 600) // inicia o efeito apos 600ms
+    return () => clearTimeout(timer) 
   }, [])
 
   return (
@@ -44,7 +45,7 @@ export default function Hero() {
 
         {/* Name */}
         <h1 className="font-orbitron font-black text-[clamp(2rem,7vw,5.2rem)] leading-[1.05] mb-3 tracking-[-0.01em] text-[#00FF41] glow animate-glitch">
-          SEU NOME
+          Vinicius Arruda
         </h1>
 
         {/* Role — typewriter */}
@@ -64,7 +65,7 @@ export default function Hero() {
           </div>
           <div className="opacity-0 animate-[fadeUp_0.5s_ease_3.1s_forwards]">
             <span className="text-[#86efac]">$ </span>
-            Disponível para novos projetos e oportunidades.
+            Disponível para novos projetos
             <span className="animate-blink text-[#00FF41]"> █</span>
           </div>
           <div className="opacity-0 animate-[fadeUp_0.5s_ease_4.4s_forwards]">
@@ -77,7 +78,7 @@ export default function Hero() {
         {/* CTA */}
         <div className="flex gap-4 flex-wrap mb-16">
           <a
-            href="https://github.com/seuuser"
+            href="https://github.com/ViniciusSavianDeArruda"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-[0.55rem] font-mono text-[0.82rem] px-7 py-[0.7rem] tracking-[0.14em] border border-[#00FF41] text-[#00FF41] bg-transparent hover:bg-[#00FF41] hover:text-[#080808] transition-all duration-200"
@@ -88,7 +89,7 @@ export default function Hero() {
             GitHub
           </a>
           <a
-            href="https://linkedin.com/in/seuuser"
+            href="https://www.linkedin.com/in/arrudavinicius/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-[0.55rem] font-mono text-[0.82rem] px-7 py-[0.7rem] tracking-[0.14em] border border-[#1a4d2e] text-[#4ade80] bg-transparent hover:border-[#00AA2A] hover:text-[#00FF41] transition-all duration-200"
@@ -100,10 +101,9 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* Status */}
         <div className="font-mono text-[0.72rem] text-[#4ade80] flex gap-8 flex-wrap">
           <span><span className="text-[#00FF41]">●</span> DISPONÍVEL PARA PROJETOS</span>
-          <span><span className="text-[#FFAA00]">◆</span> BRASIL / REMOTO</span>
+          <span><span className="text-[#FFAA00]">◆</span> BRASIL</span>
           <span><span className="text-[#60a5fa]">▶</span> FULL STACK</span>
         </div>
       </div>
