@@ -36,7 +36,7 @@ export const PROJECTS: Project[] = [
     statusColor: '#0088FF',
     github: 'https://github.com/ViniciusSavianDeArruda/Fitnnes-frontend',
     demo: 'https://app.fitnnesapp.online',
-    photo: 'public/projects/fitAi.png',
+    photo: '/projects/fitAi.png',
   },
   {
     id: '02',
@@ -47,7 +47,7 @@ export const PROJECTS: Project[] = [
     statusColor: '#00FF41',
     github: 'https://github.com/ViniciusSavianDeArruda/SistemaDeGerenciamentoDeAcervo_MuseuTrezeDeMaio',
     demo: 'https://www.youtube.com/watch?v=h1TVhw8w6M8',
-    photo: 'public/projects/FotoMuseu.png',
+    photo: '/projects/FotoMuseu.png',
   },
 ]
 
