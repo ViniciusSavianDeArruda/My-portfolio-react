@@ -1,163 +1,203 @@
-#  Meu Portfolio Pessoal
-
-Meu Portfólio desenvolvido com **React, TypeScript e Tailwind CSS**, com visual inspirado em **interface de terminal hacker** e animações interativas.
-
-Crie esse projeto com intuido de apresentar minhas habilidades, projetos pessoais e academicos como forma de evolucao e aprendizagem, e uma interface moderna e responsiva 
-
+# 🟢 Portfólio — Dev Full Stack
+ 
+Portfólio pessoal desenvolvido com **React**, **TypeScript** e **Tailwind CSS**, com identidade visual no tema **hacker terminal** — fundo escuro, verde neon, efeito Matrix e animações estilo terminal.
+ 
 ---
-
-## 🚀 Tecnologias Utilizadas
-
-- React 18
-- TypeScript
-- Tailwind CSS
-- Vite
-- Simple Icons (CDN)
-- Google Fonts (Orbitron + Share Tech Mono)
-
+ 
+## 🚀 Tecnologias
+ 
+- **React 18** — biblioteca de interface
+- **TypeScript** — tipagem estática
+- **Tailwind CSS v3** — estilização utilitária
+- **Vite** — bundler e servidor de desenvolvimento
+- **Simple Icons** (CDN) — ícones das tecnologias na seção de habilidades
+- **Google Fonts** — fontes Orbitron e Share Tech Mono
+ 
 ---
 
 ## 🖼️ Demonstração do Portfólio
-
-![Demonstração do Portfólio](assets/HeroPortfolio.png)
-
----
-
-## ✅ Deploy
-
-Veja online: []()
-
----
-
-## ⚙️ Como rodar o projeto
-
-Clone o repositório:
-```bash
-git clone https://github.com/seuusuario/portfolio.git
+   
+![Demonstração do Portfólio](src/assets/HeroPortfolio.png)
+ 
+## 📁 Estrutura do Projeto
+ 
 ```
-
-Entre na pasta do projeto:
+portfolio/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Navbar.tsx         # Navegação fixa com menu hamburger mobile
+│   │   ├── Hero.tsx           # Seção inicial com efeito Matrix e typing animation
+│   │   ├── MatrixCanvas.tsx   # Canvas com animação de caracteres estilo Matrix
+│   │   ├── About.tsx          # Bio e tabela de informações pessoais
+│   │   ├── Formation.tsx      # Formação acadêmica
+│   │   ├── Skills.tsx         # Grid de ícones de tecnologias por categoria
+│   │   ├── Projects.tsx       # Cards de projetos com imagem e links
+│   │   ├── Contact.tsx        # Links de contato e e-mail
+│   │   ├── Footer.tsx         # Rodapé
+│   │   └── SectionLabel.tsx   # Componente reutilizável de título de seção
+│   ├── data/
+│   │   └── index.ts           # Todos os dados do portfólio (edite aqui!)
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── index.css              # Animações e classes customizadas do Tailwind
+├── index.html
+├── tailwind.config.ts
+├── tsconfig.json
+├── vite.config.ts
+└── package.json
+```
+ 
+---
+ 
+## ⚙️ Como rodar localmente
+ 
+### Pré-requisitos
+- Node.js 18+
+- npm ou yarn
+ 
+### Instalação
+ 
 ```bash
+# Clone o repositório
+git clone https://github.com/seuuser/portfolio.git
+ 
+# Entre na pasta
 cd portfolio
-```
-
-Instale as dependências:
-```bash
+ 
+# Instale as dependências
 npm install
-```
-
-Inicie o servidor de desenvolvimento:
-```bash
+ 
+# Inicie o servidor de desenvolvimento
 npm run dev
 ```
-
-A aplicação estará disponível em:
+ 
+O projeto estará disponível em `http://localhost:5173`
+ 
+### Build para produção
+ 
+```bash
+npm run build
 ```
-http://localhost:5173
+ 
+---
+ 
+## ✏️ Como personalizar
+ 
+Todos os dados do portfólio estão centralizados em **`src/data/index.ts`**. Edite esse arquivo para atualizar o conteúdo sem precisar mexer nos componentes.
+ 
+### Projetos
+ 
+```ts
+export const PROJECTS: Project[] = [
+  {
+    id: '01',
+    name: 'Nome do Projeto',
+    desc: 'Descrição do projeto...',
+    tech: ['React', 'Node.js', 'PostgreSQL'],
+    status: 'PRODUCTION',        // PRODUCTION | OPEN SOURCE | EM DEV
+    statusColor: '#00FF41',      // cor do badge
+    github: 'https://github.com/seuuser/projeto',
+    demo: 'https://seuprojeto.com',  // opcional
+    preview: 'https://url-da-screenshot.png', // imagem do card
+    url: 'seuprojeto.com',
+  },
+]
 ```
-
----
-
-## 📦 Scripts disponíveis
-
-| Script            | Descrição                             |
-| ----------------- | ------------------------------------- |
-| `npm run dev`     | Inicia o servidor de desenvolvimento  |
-| `npm run build`   | Gera build de produção                |
-| `npm run preview` | Visualiza o build localmente          |
-
----
-
-## 📁 Estrutura do Projeto
-
+ 
+### Habilidades
+ 
+Adicione ou remova tecnologias usando os slugs do [Simple Icons](https://simpleicons.org):
+ 
+```ts
+{ name: 'React', icon: 'react' },
+{ name: 'Next.js', icon: 'nextdotjs' },
 ```
-public/
- ├─ FotoMuseu.png
- ├─ fitAi.png
- └─ preview.gif
-
-src/
- ├─ components/
- │   ├─ About.tsx          # Bio e informações pessoais
- │   ├─ Contact.tsx        # Links de contato
- │   ├─ Footer.tsx         # Rodapé do site
- │   ├─ Hero.tsx           # Seção inicial
- │   ├─ MatrixCanvas.tsx   # Efeito visual estilo Matrix
- │   ├─ Navbar.tsx         # Navegação
- │   ├─ Projects.tsx       # Cards de projetos
- │   ├─ SectionLabel.tsx   # Títulos reutilizáveis
- │   ├─ Skills.tsx         # Grid de habilidades
- │   └─ Formation.tsx      # Formação acadêmica
- │
- ├─ data/
- │   └─ index.ts           # Dados editáveis do portfólio
- │
- ├─ App.tsx
- ├─ main.tsx
- └─ index.css
-
-tailwind.config.ts
-postcss.config.js
-vite.config.ts
-tsconfig.json
-package.json
+ 
+### Contato
+ 
+```ts
+export const CONTACT_LINKS: ContactLink[] = [
+  { label: 'GITHUB',   value: 'github.com/seuuser',      href: 'https://github.com/seuuser' },
+  { label: 'LINKEDIN', value: 'linkedin.com/in/seuuser', href: 'https://linkedin.com/in/seuuser' },
+]
 ```
-
+ 
+### Dados pessoais
+ 
+Edite `ABOUT_ROWS` em `src/data/index.ts` para atualizar nome, localização, especialidade etc.
+ 
+### Hero
+ 
+Em `src/components/Hero.tsx`, troque:
+- `SEU NOME` pelo seu nome real
+- Os textos das linhas de digitação
+- As URLs do GitHub e LinkedIn nos botões CTA
+ 
 ---
-
-## 🎨 Características do Projeto
-
-- Interface inspirada em terminal hacker
-- Layout totalmente responsivo
-- Estrutura modular de componentes
-- Fácil personalização via arquivo de dados
-- Animações visuais e efeitos interativos
-
+ 
+## 🎨 Identidade Visual
+ 
+| Elemento | Valor |
+|---|---|
+| Cor principal | `#00FF41` (verde neon) |
+| Cor secundária | `#4ade80` (verde médio) |
+| Texto de corpo | `#bbf7d0` (verde claro) |
+| Fundo | `#080808` (preto quase puro) |
+| Fundo de cards | `#0a0a0a` |
+| Fonte display | Orbitron (títulos e logo) |
+| Fonte mono | Share Tech Mono (todo o resto) |
+ 
 ---
-
-## 🤝 Contribuindo
-
-Contribuições são bem-vindas!
-
-Para contribuir com este projeto, siga estas etapas:
-
-1. **Fork este repositório**  
-   Clique em "Fork" no topo da página para criar uma cópia em seu GitHub.
-
-2. **Crie uma branch para sua feature ou correção**  
-   ```bash
-   git checkout -b minha-feature
-   ```
-
-3. **Faça as modificações desejadas e commit**  
-   ```bash
-   git commit -m "Adiciona minha nova feature"
-   ```
-
-4. **Envie para seu fork**  
-   ```bash
-   git push origin minha-feature
-   ```
-
-5. **Abra um Pull Request**  
-   No GitHub, vá até seu fork e clique em "Compare & pull request".
-
-Aguarde pela revisão e feedback. Obrigado por contribuir!
-
+ 
+## 📱 Responsividade
+ 
+- **Mobile** — menu hamburger com overlay fullscreen animado
+- **Tablet** — layout adaptado em 2 colunas onde aplicável
+- **Desktop** — navegação horizontal, projetos em lista alternada
+ 
 ---
-
-## 🙏 Agradecimentos
-
-- Inspirado em interfaces de portfólios da comunidade Dev.
-
+ 
+## 🗂️ Seções
+ 
+| Seção | Descrição |
+|---|---|
+| **Home** | Hero com efeito Matrix, typing animation e botões de CTA |
+| **About** | Bio pessoal e tabela de informações |
+| **Formatiom** | Formação acadêmica |
+| **Skills** | Ícones das tecnologias agrupados por categoria |
+| **Projects** | Cards com imagem, descrição, stack e links |
+| **Contact** | E-mail e links para redes sociais |
+ 
 ---
+ 
+## 📦 Deploy
+ 
+### Vercel (recomendado)
+ 
+1. Suba o projeto para o GitHub
+2. Acesse [vercel.com]() e importe o repositório
+3. A Vercel detecta o Vite automaticamente — clique em **Deploy**
+4. Pronto! URL gerada automaticamente
 
-## 📬 Contato
+   Deploy do portfolio: https://my-portfolio-react-steel.vercel.app/
 
-Entre em contato pelo [LinkedIn](https://linkedin.com/in/arrudavinicius)
-
+ 
+### Netlify
+ 
+```bash
+npm run build
+# Arraste a pasta /dist para netlify.com/drop
+```
+ 
 ---
+ 
+## 📄 Licença
+ 
+Este projeto é de uso pessoal. Sinta-se livre para usar como referência e adaptá-lo ao seu próprio portfólio.
+ 
+---
+ 
+Desenvolvido por **Vinicius Arrruda** — [https://github.com/ViniciusSavianDeArruda]()
 
-## 📝 Licença
 
-Este projeto está licenciado sob a licença MIT.
