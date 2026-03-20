@@ -25,7 +25,7 @@ export default function Skills() {
         <SectionLabel cmd="ls -la ./technologies" title="skills.json" />
         <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-8">
           {SKILL_CATEGORIES.map((cat) => (
-            <div key={cat.label} className="bg-[#0a0a0a] border border-[#002200] p-6">
+            <div key={cat.label} className="bg-[#0a0a0a] border border-[#002200] p-3">
               <p className="font-mono text-[0.68rem] text-[#4ade80] tracking-[0.22em] mb-5 border-b border-[#001500] pb-2">
                 {cat.label}
               </p>

@@ -9,6 +9,7 @@ export default function Footer() {
       <span className="font-mono text-[0.72rem] text-[#4ade80]">
         <span className="text-[#00FF41] animate-pulse2">●</span> ONLINE
       </span>
+      <span className="font-mono text-[0.9rem] text-[#4ade80]">Obrigado por visitar!</span>
     </footer>
   )
 }
