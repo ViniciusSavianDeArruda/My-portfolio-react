@@ -1,6 +1,6 @@
 #  Meu Portfolio Pessoal
 
-Portfólio de desenvolvedor **Full Stack** desenvolvido com **React, TypeScript e Tailwind CSS**, com visual inspirado em **interface de terminal hacker** e animações interativas.
+Meu Portfólio desenvolvido com **React, TypeScript e Tailwind CSS**, com visual inspirado em **interface de terminal hacker** e animações interativas.
 
 Crie esse projeto com intuido de apresentar minhas habilidades, projetos pessoais e academicos como forma de evolucao e aprendizagem, e uma interface moderna e responsiva 
 
