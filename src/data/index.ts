@@ -7,7 +7,7 @@ export interface Project {
   statusColor: string
   github: string
   demo?: string
-  preview: string       
+  photo: string       
 }
 
 export interface Skill {
@@ -36,7 +36,7 @@ export const PROJECTS: Project[] = [
     statusColor: '#0088FF',
     github: 'https://github.com/ViniciusSavianDeArruda/Fitnnes-frontend',
     demo: 'https://app.fitnnesapp.online',
-    preview: 'fitAi.png',
+    photo: 'public/projects/fitAi.png',
   },
   {
     id: '02',
@@ -47,17 +47,7 @@ export const PROJECTS: Project[] = [
     statusColor: '#00FF41',
     github: 'https://github.com/ViniciusSavianDeArruda/SistemaDeGerenciamentoDeAcervo_MuseuTrezeDeMaio',
     demo: 'https://www.youtube.com/watch?v=h1TVhw8w6M8',
-    preview: 'public/FotoMuseu.png',
-  },
-  {
-    id: '03',
-    name: '',
-    desc: '',
-    tech: [''],
-    status: 'EM DEV',
-    statusColor: '#FFAA00',
-    github: '',
-    preview: '#',
+    photo: 'public/projects/FotoMuseu.png',
   },
 ]
 
