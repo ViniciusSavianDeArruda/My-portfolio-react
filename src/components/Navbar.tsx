@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const NAV_ITEMS = ['home', 'about', 'education', 'skills', 'projects', 'contact'] as const
+const NAV_ITEMS = ['home', 'about', 'formation', 'skills', 'projects', 'contact'] as const
 
 export default function Navbar() {
   const [active, setActive]   = useState<string>('home')

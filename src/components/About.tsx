@@ -7,7 +7,6 @@ export default function About() {
       <div className="max-w-[920px] mx-auto">
         <SectionLabel cmd="cat README.md" title="about.exe" />
         <div className="grid grid-cols-[repeat(auto-fit,minmax(290px,1fr))] gap-10">
-            {/* bio */} 
           <div className="bg-[#0a0a0a] border border-[#002200] p-8 leading-[1.9] text-[#bbf7d0] text-[0.88rem]">
             <p>
               Olá! Sou um desenvolvedor{' '}

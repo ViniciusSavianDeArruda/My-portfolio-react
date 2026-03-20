@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react'
 import SectionLabel from './SectionLabel'
 import { PROJECTS } from '../data'
 
@@ -16,144 +15,63 @@ const ExternalIcon = () => (
   </svg>
 )
 
-const linkCls = "inline-flex items-center gap-[0.45rem] font-mono text-[0.78rem] text-[#4ade80] no-underline border border-[#1a4d2e] px-3 py-[0.35rem] transition-all duration-200 hover:text-[#00FF41] hover:border-[#00FF41]"
-
-interface PreviewState {
-  visible: boolean
-  x: number
-  y: number
-  img: string
-  title: string
-  url: string
-  status: string
-  statusColor: string
-}
+const linkCls = "inline-flex items-center gap-[0.45rem] font-mono text-[0.75rem] text-[#4ade80] no-underline border border-[#1a4d2e] px-3 py-1.5 transition-all duration-200 hover:text-[#00FF41] hover:border-[#00FF41]"
 
 export default function Projects() {
-  const [preview, setPreview] = useState<PreviewState>({
-    visible: false, x: 0, y: 0,
-    img: '', title: '', url: '', status: '', statusColor: '',
-  })
-  const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const previewRef = useRef<HTMLDivElement>(null)
-  const PW = 340
-  const MARGIN = 24
-
-  function calcPos(rect: DOMRect) {
-    const vpW = window.innerWidth
-    const vpH = window.innerHeight
-    const pH  = previewRef.current?.offsetHeight ?? 230
-    let left = rect.right + MARGIN
-    if (left + PW > vpW - 8) left = rect.left - PW - MARGIN
-    left = Math.max(8, left)
-    let top = rect.top + rect.height / 2 - pH / 2
-    top = Math.max(8, Math.min(top, vpH - pH - 8))
-    return { left, top }
-  }
-
-  function showPreview(e: React.MouseEvent<HTMLDivElement>, p: typeof PROJECTS[0]) {
-    if (hideTimer.current) clearTimeout(hideTimer.current)
-    const { left, top } = calcPos((e.currentTarget as HTMLDivElement).getBoundingClientRect())
-    setPreview({ visible: true, x: left, y: top, img: p.preview, title: p.name, url: p.github, status: p.status, statusColor: p.statusColor })
-  }
-
-  function updatePos(e: React.MouseEvent<HTMLDivElement>) {
-    if (!preview.visible) return
-    const { left, top } = calcPos((e.currentTarget as HTMLDivElement).getBoundingClientRect())
-    setPreview(prev => ({ ...prev, x: left, y: top }))
-  }
-
-  function hidePreview() {
-    hideTimer.current = setTimeout(() => setPreview(prev => ({ ...prev, visible: false })), 120)
-  }
-
-  useEffect(() => () => { if (hideTimer.current) clearTimeout(hideTimer.current) }, [])
-
   return (
     <section id="projects" className="py-24 px-[clamp(1.5rem,5vw,4rem)] border-t border-[#001500]">
-
-      {/* ── Floating preview panel ── */}
-      <div
-        ref={previewRef}
-        className="hidden lg:block"
-        style={{
-          position: 'fixed', zIndex: 200,
-          width: PW, left: preview.x, top: preview.y,
-          background: '#0a0a0a',
-          border: '1px solid #00FF41',
-          boxShadow: '0 0 30px rgba(0,255,65,.2), 0 0 60px rgba(0,255,65,.06)',
-          pointerEvents: 'none', overflow: 'hidden',
-          opacity: preview.visible ? 1 : 0,
-          transform: preview.visible ? 'scale(1) translateX(0)' : 'scale(0.97) translateX(12px)',
-          transition: 'opacity .22s ease, transform .22s ease',
-        }}
-      >
-        {/* Header dots */}
-        <div style={{ background:'#060f0a', borderBottom:'1px solid #002200', padding:'.5rem .8rem', display:'flex', alignItems:'center', gap:'.5rem' }}>
-          <div style={{ width:8, height:8, borderRadius:'50%', background:'#ff5f57' }} />
-          <div style={{ width:8, height:8, borderRadius:'50%', background:'#ffbd2e' }} />
-          <div style={{ width:8, height:8, borderRadius:'50%', background:'#28ca41' }} />
-          <span style={{ flex:1, textAlign:'center', fontSize:'.65rem', color:'#4ade80', letterSpacing:'.12em', fontFamily:"'Share Tech Mono',monospace" }}>
-            {preview.title} — preview
-          </span>
-        </div>
-        {/* Image */}
-        <div style={{ position:'relative', width:'100%', aspectRatio:'16/9', overflow:'hidden', background:'#060f0a' }}>
-          <img
-            src={preview.img} alt="preview"
-            style={{ width:'100%', height:'100%', objectFit:'cover', display:'block', transition:'transform 6s ease', transform: preview.visible ? 'translateY(-6%)' : 'translateY(0)' }}
-          />
-          <div style={{ position:'absolute', inset:0, background:'repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.04) 2px,rgba(0,0,0,.04) 4px)', pointerEvents:'none' }} />
-        </div>
-        {/* Footer */}
-        <div style={{ padding:'.6rem .8rem', display:'flex', justifyContent:'space-between', alignItems:'center', background:'#060f0a' }}>
-          <span style={{ fontSize:'.6rem', color:'#4ade80', letterSpacing:'.08em', fontFamily:"'Share Tech Mono',monospace" }}>{preview.url}</span>
-          <span style={{ fontSize:'.6rem', letterSpacing:'.1em', border:`1px solid ${preview.statusColor}`, color:preview.statusColor, padding:'1px 6px', fontFamily:"'Share Tech Mono',monospace" }}>
-            {preview.status}
-          </span>
-        </div>
-      </div>
-
-      {/* ── Cards ── */}
       <div className="max-w-[920px] mx-auto">
         <SectionLabel cmd="git log --oneline --all" title="projects.sh" />
+
         <div className="flex flex-col gap-5">
-          {PROJECTS.map((project) => (
+          {PROJECTS.map((project, i) => (
             <div
               key={project.id}
-              className="group bg-[#0a0a0a] border border-[#002200] p-8 transition-all duration-300 hover:border-[#00FF41] hover:-translate-y-0.5 cursor-default"
-              onMouseEnter={(e) => showPreview(e, project)}
-              onMouseMove={updatePos}
-              onMouseLeave={hidePreview}
+              className="group bg-[#0a0a0a] border border-[#002200] overflow-hidden transition-all duration-300 hover:border-[#00FF41] cursor-default"
+              onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.boxShadow = '0 0 22px rgba(0,255,65,0.1)' }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.boxShadow = 'none' }}
             >
-              <div className="flex justify-between items-start flex-wrap gap-2 mb-4">
-                <div className="flex items-center gap-3">
-                  <span className="font-orbitron text-[0.72rem] text-[#4ade80]">#{project.id}</span>
-                  <span className="font-orbitron text-[0.95rem] font-bold text-[#00AA2A] group-hover:text-[#00FF41] transition-colors duration-200">
-                    {project.name}
+              {/* Alterna imagem esquerda/direita */}
+              <div className={`flex flex-col md:flex-row ${i % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
+
+                {/* Imagem */}
+                <div className="relative md:w-[45%] flex-shrink-0 overflow-hidden bg-[#060f0a]" style={{ minHeight: '220px' }}>
+                  <img
+                    src={project.photo}
+                    alt={project.name}
+                    className="w-full h-full object-cover absolute inset-0 transition-transform duration-700 group-hover:scale-[1.04]"
+                  />
+                  <div className="absolute inset-0 pointer-events-none" style={{ background: 'repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.06) 2px,rgba(0,0,0,0.06) 4px)' }} />
+                  <span className="absolute top-3 left-3 font-orbitron text-[0.65rem] text-[#4ade80] bg-[rgba(8,8,8,0.85)] px-2 py-1">
+                    #{project.id}
                   </span>
                 </div>
-                <span className="font-mono text-[0.62rem] px-[10px] py-[3px] tracking-[0.1em] border"
-                  style={{ borderColor: project.statusColor, color: project.statusColor }}>
-                  {project.status}
-                </span>
-              </div>
-              <p className="text-[#bbf7d0] leading-[1.8] text-[0.85rem] mb-5">{project.desc}</p>
-              <div className="flex gap-[0.35rem] flex-wrap mb-5">
-                {project.tech.map((t) => (
-                  <span key={t} className="font-mono text-[0.68rem] text-[#4ade80] border border-[#1a4d2e] px-2 py-[2px]">{t}</span>
-                ))}
-              </div>
-              <div className="flex justify-between items-center">
-                <div className="flex gap-2 flex-wrap">
-                  <a href={project.github} className={linkCls}><GithubIcon /> GitHub</a>
-                  {project.demo && (
-                    <a href={project.demo} className={linkCls}><ExternalIcon /> Live Demo</a>
-                  )}
+
+                {/* Conteúdo */}
+                <div className="flex flex-col justify-between p-6 md:p-8 flex-1">
+                  <div>
+                    <div className="flex justify-between items-start flex-wrap gap-2 mb-3">
+                      <h3 className="font-orbitron text-[1rem] font-bold text-[#00AA2A] group-hover:text-[#00FF41] transition-colors duration-200">
+                        {project.name}
+                      </h3>
+                      <span className="font-mono text-[0.6rem] px-2 py-[3px] tracking-[0.1em] border whitespace-nowrap"
+                        style={{ borderColor: project.statusColor, color: project.statusColor }}>
+                        {project.status}
+                      </span>
+                    </div>
+                    <p className="text-[#bbf7d0] leading-[1.8] text-[0.85rem] mb-5">{project.desc}</p>
+                    <div className="flex gap-[0.35rem] flex-wrap mb-6">
+                      {project.tech.map((t) => (
+                        <span key={t} className="font-mono text-[0.65rem] text-[#4ade80] border border-[#1a4d2e] px-2 py-[2px]">{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex gap-2 flex-wrap pt-4 border-t border-[#001500]">
+                    <a href={project.github} className={linkCls}><GithubIcon /> GitHub</a>
+                    {project.demo && <a href={project.demo} className={linkCls}><ExternalIcon /> Live Demo</a>}
+                  </div>
                 </div>
-                <span className="hidden lg:block font-mono text-[0.68rem] text-[#1a5c35] group-hover:text-[#4ade80] transition-colors duration-300 tracking-[.1em]">
-                  ⌖ hover para preview
-                </span>
+
               </div>
             </div>
           ))}
