@@ -1,4 +1,4 @@
-# 🟢 Portfólio — Dev Full Stack
+# Meu Portfolio Pessoal
  
 Portfólio pessoal desenvolvido com **React**, **TypeScript** e **Tailwind CSS**, com identidade visual no tema **hacker terminal** — fundo escuro, verde neon, efeito Matrix e animações estilo terminal.
  
