@@ -1,11 +1,11 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Education from './components/Formation'
-import Skills from './components/Skills'
-import Projects from './components/Projects'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+import About from "./components/sections/About";
+import Contact from "./components/sections/Contact";
+import Education from "./components/sections/Formation";
+import Hero from "./components/sections/Hero";
+import Projects from "./components/sections/Projects";
+import Skills from "./components/sections/Skills";
+import Footer from "./components/ui/Footer";
+import Navbar from "./components/ui/Navbar";
 
 export default function App() {
   return (
@@ -17,7 +17,7 @@ export default function App() {
       <Skills />
       <Projects />
       <Contact />
-      <Footer/>
+      <Footer />
     </div>
-  )
+  );
 }

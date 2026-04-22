@@ -1,12 +1,16 @@
 interface SectionLabelProps {
-  cmd: string
-  title: string
-  center?: boolean
+  cmd: string;
+  title: string;
+  center?: boolean;
 }
 
-export default function SectionLabel({ cmd, title, center }: SectionLabelProps) {
+export default function SectionLabel({
+  cmd,
+  title,
+  center,
+}: SectionLabelProps) {
   return (
-    <div className={`mb-10 ${center ? 'text-center' : ''}`}>
+    <div className={`mb-10 ${center ? "text-center" : ""}`}>
       <p className="text-[#4ade80] text-xs mb-1 font-mono">
         <span className="text-[#00FF41]">root@portfolio</span>:~$ {cmd}
       </p>
@@ -14,9 +18,9 @@ export default function SectionLabel({ cmd, title, center }: SectionLabelProps) 
         {title}
       </h2>
       <div
-        className={`w-[38px] h-[2px] bg-[#00FF41] mt-2 ${center ? 'mx-auto' : ''}`}
-        style={{ boxShadow: '0 0 8px #00FF41' }}
+        className={`w-[38px] h-[2px] bg-[#00FF41] mt-2 ${center ? "mx-auto" : ""}`}
+        style={{ boxShadow: "0 0 8px #00FF41" }}
       />
     </div>
-  )
+  );
 }

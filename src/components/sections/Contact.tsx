@@ -1,11 +1,18 @@
-import SectionLabel from './SectionLabel'
-import { CONTACT_LINKS } from '../data'
+import { CONTACT_LINKS } from "../../data";
+import SectionLabel from "../ui/SectionLabel";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 px-[clamp(1.5rem,5vw,4rem)] border-t border-[#001500]">
+    <section
+      id="contact"
+      className="py-24 px-[clamp(1.5rem,5vw,4rem)] border-t border-[#001500]"
+    >
       <div className="max-w-[920px] mx-auto text-center">
-        <SectionLabel cmd="echo 'Vamos trabalhar juntos?'" title="contact.sh" center />
+        <SectionLabel
+          cmd="echo 'Vamos trabalhar juntos?'"
+          title="contact.sh"
+          center
+        />
 
         <p className="font-mono text-[#bbf7d0] leading-[1.9] mx-auto max-w-[480px] text-[0.88rem] mt-8">
           Aberto para novos projetos, oportunidades e colaborações.
@@ -26,18 +33,23 @@ export default function Contact() {
               rel="noopener noreferrer"
               className="flex flex-col items-center px-8 py-6 border border-[#002200] bg-[#0a0a0a] no-underline min-w-[175px] gap-2 transition-all duration-300 hover:border-[#00FF41]"
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 0 20px rgba(0,255,65,0.1)'
+                (e.currentTarget as HTMLAnchorElement).style.boxShadow =
+                  "0 0 20px rgba(0,255,65,0.1)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'
+                (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
               }}
             >
-              <span className="font-mono text-[0.62rem] text-[#4ade80] tracking-[0.2em]">{link.label}</span>
-              <span className="font-mono text-[0.8rem] text-[#00FF41]">{link.value}</span>
+              <span className="font-mono text-[0.62rem] text-[#4ade80] tracking-[0.2em]">
+                {link.label}
+              </span>
+              <span className="font-mono text-[0.8rem] text-[#00FF41]">
+                {link.value}
+              </span>
             </a>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
