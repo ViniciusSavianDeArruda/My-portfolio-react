@@ -19,7 +19,7 @@ export const PROJECTS: Project[] = [
     statusColor: "#0088FF",
     github: "https://github.com/ViniciusSavianDeArruda/Fitnnes-frontend",
     demo: "https://app.fitnnesapp.online",
-    photo: "/src/assets/projects/fitai.png",
+    photo: "/projects/fitai.png",
   },
   {
     id: "02",
@@ -31,7 +31,7 @@ export const PROJECTS: Project[] = [
     github:
       "https://github.com/ViniciusSavianDeArruda/SistemaDeGerenciamentoDeAcervo_MuseuTrezeDeMaio",
     demo: "https://www.youtube.com/watch?v=h1TVhw8w6M8",
-    photo: "/src/assets/projects/museu.png",
+    photo: "/projects/museu.png",
   },
 ];
 
@@ -52,7 +52,8 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     skills: [
       { name: "Node.js", icon: "nodedotjs" },
       { name: "Python", icon: "python" },
-      { name: "FastAPI", icon: "fastapi" },
+      { name: "Fastify", icon: "fastify" },
+      {name: "Express", icon: "express" },
       { name: "Prisma", icon: "prisma" },
     ],
   },
@@ -90,7 +91,7 @@ export const ABOUT_ROWS = [
   { label: "NOME", value: "Vinicius Arruda" },
   { label: "FUNÇÃO", value: "Full Stack Developer" },
   { label: "LOCALIZAÇÃO", value: "Brasil 🇧🇷,Rio Grande do Sul - Santa maria " },
-  { label: "EXPERIÊNCIA", value: "+1 ano de código" },
+  { label: "EXPERIÊNCIA", value: "+1,5 anos de experiência" },
   { label: "STATUS", value: "✓ Disponível", highlight: true },
-  { label: "ESPECIALIDADE", value: "Web / BackEnd / Bd" },
+  { label: "ESPECIALIDADE", value: "Web / BackEnd / Banco de dados" },
 ];
