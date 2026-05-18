@@ -180,7 +180,7 @@ Em `src/components/Hero.tsx`, troque:
 3. A Vercel detecta o Vite automaticamente — clique em **Deploy**
 4. Pronto! URL gerada automaticamente
 
-   Deploy do portfolio: https://my-portfolio-react-steel.vercel.app/
+   Deploy do portfolio: https://viniciusarruda.dev/
 
  
 ### Netlify
