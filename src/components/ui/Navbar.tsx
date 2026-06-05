@@ -59,7 +59,7 @@ export default function Navbar() {
           &lt;DEV/&gt;
         </span>
 
-        <div className="hidden md:flex gap-[clamp(0.8rem,2.5vw,2rem)]">
+        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 gap-[clamp(0.8rem,2.5vw,2rem)]">
           {NAV_ITEMS.map((id) => (
             <button
               key={id}
@@ -70,7 +70,7 @@ export default function Navbar() {
                   : "text-[#4ade80] hover:text-[#00FF41]"
               }`}
             >
-              {id}
+              [{id}]
             </button>
           ))}
         </div>
