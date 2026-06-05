@@ -45,7 +45,7 @@ export default function Projects() {
                   i % 2 !== 0 ? "md:flex-row-reverse" : ""
                 }`}
               >
-                {/* IMAGEM - FIX: absolute inset-0 para preencher o container corretamente */}
+                {/* IMAGEM */}
                 <div className="relative md:w-[45%] flex-shrink-0 overflow-hidden bg-[#060f0a] min-h-[220px]">
                   <img
                     src={project.photo}
@@ -120,4 +120,4 @@ export default function Projects() {
       </div>
     </section>
   );
-} 
+}
