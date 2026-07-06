@@ -6,12 +6,21 @@ export default function MatrixCanvas() {
   useEffect(() => {
     const canvas = ref.current;
     if (!canvas) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (prefersReducedMotion) return;
+
     const ctx = canvas.getContext("2d")!;
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>/{}[]@#$%^&*|\\".split(
       "",
     );
     const fs = 13;
+    const frameInterval = 55;
     let drops: number[] = [];
+    let lastFrameTime = 0;
+    let rafId: number;
 
     const resize = () => {
       canvas.width = canvas.offsetWidth;
@@ -28,7 +37,11 @@ export default function MatrixCanvas() {
     window.addEventListener("resize", resize);
     window.addEventListener("resize", initDrops);
 
-    const interval = setInterval(() => {
+    const draw = (time: number) => {
+      rafId = requestAnimationFrame(draw);
+      if (time - lastFrameTime < frameInterval) return;
+      lastFrameTime = time;
+
       ctx.fillStyle = "rgba(8,8,8,0.055)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.font = `${fs}px 'Share Tech Mono', monospace`;
@@ -43,10 +56,11 @@ export default function MatrixCanvas() {
         if (y * fs > canvas.height && Math.random() > 0.975) drops[i] = 0;
         drops[i] += 1;
       });
-    }, 55);
+    };
+    rafId = requestAnimationFrame(draw);
 
     return () => {
-      clearInterval(interval);
+      cancelAnimationFrame(rafId);
       window.removeEventListener("resize", resize);
       window.removeEventListener("resize", initDrops);
     };
