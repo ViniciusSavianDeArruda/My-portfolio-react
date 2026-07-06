@@ -1,5 +1,6 @@
 import useTypewriter from "../../hooks/useTypewriter";
 import MatrixCanvas from "../ui/MatrixCanvas";
+import { GithubIcon, LinkedinIcon } from "../ui/icons";
 
 export default function Hero() {
   const scrollTo = (id: string) =>
@@ -16,31 +17,31 @@ export default function Hero() {
 
       {/* Conteúdo centralizado */}
       <div className="relative z-10 px-[clamp(1.5rem,5vw,4rem)] py-16 max-w-[860px] mx-auto flex flex-col items-center text-center">
-        <p className="font-mono text-[0.78rem] text-[#4ade80] mb-6">
-          <span className="text-[#00FF41]">root@portfolio</span>
+        <p className="font-mono text-[0.78rem] text-green-400 mb-6">
+          <span className="text-green-neon">root@portfolio</span>
           <span className="text-[#555]">:~$</span>
-          <span className="text-[#86efac]"> ./init.sh</span>
+          <span className="text-green-300"> ./init.sh</span>
         </p>
 
-        <h1 className="font-orbitron font-black text-[clamp(2.2rem,7vw,5.2rem)] leading-[1.05] mb-4 tracking-[-0.01em] text-[#00FF41] glow animate-glitch">
+        <h1 className="font-orbitron font-black text-[clamp(2.2rem,7vw,5.2rem)] leading-[1.05] mb-4 tracking-[-0.01em] text-green-neon glow animate-glitch">
           Vinicius Arruda
         </h1>
 
-        <p className="font-orbitron text-[clamp(0.65rem,1.5vw,0.88rem)] text-[#00AA2A] tracking-[0.35em] uppercase mb-10 h-6">
+        <p className="font-orbitron text-[clamp(0.65rem,1.5vw,0.88rem)] text-green-dim tracking-[0.35em] uppercase mb-10 h-6">
           ▶ {displayed}
-          <span className="animate-blink text-[#00FF41]">|</span> ◀
+          <span className="animate-blink text-green-neon">|</span> ◀
         </p>
 
         <div className="font-mono text-[clamp(0.8rem,1.4vw,0.88rem)] leading-[2.2] mb-12 flex flex-col items-center">
           <div className="opacity-0 animate-[fadeUp_0.5s_ease_0.5s_forwards]">
-            <span className="text-[#86efac]">$ </span>
+            <span className="text-green-300">$ </span>
             Construindo soluções completas — do banco de dados à interface.
-            <span className="animate-blink text-[#00FF41]"> █</span>
+            <span className="animate-blink text-green-neon"> █</span>
           </div>
           <div className="opacity-0 animate-[fadeUp_0.5s_ease_1.8s_forwards]">
-            <span className="text-[#86efac]">$ </span>
+            <span className="text-green-300">$ </span>
             Código limpo. Arquitetura sólida. Performance real.
-            <span className="animate-blink text-[#00FF41]"> █</span>
+            <span className="animate-blink text-green-neon"> █</span>
           </div>
         </div>
 
@@ -49,30 +50,32 @@ export default function Hero() {
             href="https://github.com/ViniciusSavianDeArruda"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-[0.55rem] font-mono text-[0.82rem] px-7 py-[0.7rem] tracking-[0.14em] border border-[#00FF41] text-[#00FF41] bg-transparent hover:bg-[#00FF41] hover:text-[#080808] transition-all duration-200"
+            className="inline-flex items-center gap-[0.55rem] font-mono text-[0.82rem] px-7 py-[0.7rem] tracking-[0.14em] border border-green-neon text-green-neon bg-transparent hover:bg-green-neon hover:text-bg transition-all duration-200"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}>
-              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-            </svg>
+            <GithubIcon size={16} />
             GitHub
           </a>
           <a
             href="https://www.linkedin.com/in/arrudavinicius/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-[0.55rem] font-mono text-[0.82rem] px-7 py-[0.7rem] tracking-[0.14em] border border-[#1a4d2e] text-[#4ade80] bg-transparent hover:border-[#00AA2A] hover:text-[#00FF41] transition-all duration-200"
+            className="inline-flex items-center gap-[0.55rem] font-mono text-[0.82rem] px-7 py-[0.7rem] tracking-[0.14em] border border-neutral-700 text-green-400 bg-transparent hover:border-green-dim hover:text-green-neon transition-all duration-200"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}>
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 23.2 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-            </svg>
+            <LinkedinIcon size={16} />
             LinkedIn
           </a>
         </div>
 
-        <div className="font-mono text-[0.72rem] text-[#4ade80] flex gap-8 flex-wrap justify-center">
-          <span><span className="text-[#00FF41]">●</span> DISPONÍVEL PARA PROJETOS</span>
-          <span><span className="text-[#FFAA00]">◆</span> BRASIL</span>
-          <span><span className="text-[#60a5fa]">▶</span> FULL STACK</span>
+        <div className="font-mono text-[0.72rem] text-green-400 flex gap-8 flex-wrap justify-center">
+          <span>
+            <span className="text-green-neon">●</span> DISPONÍVEL PARA PROJETOS
+          </span>
+          <span>
+            <span className="text-amber">◆</span> BRASIL
+          </span>
+          <span>
+            <span className="text-blue-400">▶</span> FULL STACK
+          </span>
         </div>
       </div>
 
@@ -82,9 +85,11 @@ export default function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 cursor-pointer border-none bg-transparent"
         aria-label="Scroll para baixo"
       >
-        <span className="font-mono text-[0.6rem] text-[#1a4d2e] tracking-[0.15em]">SCROLL</span>
+        <span className="font-mono text-[0.6rem] text-neutral-600 tracking-[0.15em]">
+          SCROLL
+        </span>
         <span
-          className="text-[#00FF41] text-lg animate-bounce"
+          className="text-green-neon text-lg animate-bounce"
           style={{ textShadow: "0 0 8px #00FF41" }}
         >
           ↓
