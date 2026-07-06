@@ -3,21 +3,29 @@
 @tailwind utilities;
 
 @layer base {
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
 
   body {
     background-color: #080808;
-    color: #00FF41;
-    font-family: 'Share Tech Mono', monospace;
+    color: #a3a3a3;
+    font-family: "Share Tech Mono", monospace;
     overflow-x: hidden;
   }
 
-  ::-webkit-scrollbar { width: 3px; }
-  ::-webkit-scrollbar-track { background: #080808; }
-  ::-webkit-scrollbar-thumb { background: #00FF41; }
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #080808;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #525252;
+  }
 
   body::after {
-    content: '';
+    content: "";
     position: fixed;
     inset: 0;
     background: repeating-linear-gradient(
@@ -34,41 +42,41 @@
 
 @layer utilities {
   .glow {
-    text-shadow: 0 0 8px #00FF41, 0 0 20px #00FF41, 0 0 40px #00AA2A;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.45);
   }
   .glow-sm {
-    text-shadow: 0 0 6px #00FF41;
+    text-shadow: 0 0 6px #00ff41;
   }
   .grid-bg {
     background-image:
-      linear-gradient(rgba(0,255,65,.018) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,255,65,.018) 1px, transparent 1px);
+      linear-gradient(rgba(0, 255, 65, 0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 65, 0.018) 1px, transparent 1px);
     background-size: 44px 44px;
   }
   .nav-underline {
     position: relative;
   }
   .nav-underline::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -2px;
     left: 0;
     width: 0;
     height: 1px;
-    background: #00FF41;
+    background: #00ff41;
     transition: width 0.3s;
   }
   .nav-underline:hover::after,
   .nav-underline.active::after {
     width: 100%;
   }
-  /* Icon filter: mono green — brighter for readability */
-  .icon-mono {
-    filter: brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(80deg) brightness(0.7);
-    transition: filter 0.3s, transform 0.3s;
+  .icon-hover {
+    transition:
+      filter 0.3s,
+      transform 0.3s;
   }
-  .icon-mono:hover {
-    filter: brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(80deg) brightness(1);
+  .icon-hover:hover {
+    filter: brightness(1.3) drop-shadow(0 0 6px rgba(0, 255, 65, 0.6));
     transform: scale(1.15) translateY(-3px);
   }
 }
