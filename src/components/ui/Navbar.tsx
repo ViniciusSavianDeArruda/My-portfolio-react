@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
 
-const NAV_ITEMS = [
-  "home",
-  "about",
-  "formation",
-  "skills",
-  "projects",
-  "contact",
-] as const;
+const NAV_ITEMS = ["home", "about", "skills", "projects", "contact"] as const;
 
 export default function Navbar() {
   const [active, setActive] = useState<string>("home");
@@ -54,8 +47,8 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[rgba(8,8,8,0.95)] backdrop-blur-md border-b border-[#002200] h-[58px] flex items-center justify-between px-[clamp(1.5rem,5vw,3.5rem)]">
-        <span className="font-orbitron text-base font-bold tracking-widest text-[#00FF41] glow-sm">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[rgba(8,8,8,0.95)] backdrop-blur-md border-b border-neutral-800 h-[58px] flex items-center justify-between px-[clamp(1.5rem,5vw,3.5rem)]">
+        <span className="font-orbitron text-base font-bold tracking-widest text-green-neon glow-sm">
           &lt;DEV/&gt;
         </span>
 
@@ -66,8 +59,8 @@ export default function Navbar() {
               onClick={() => scrollTo(id)}
               className={`nav-underline font-mono text-[0.78rem] tracking-[0.12em] uppercase transition-colors duration-200 bg-transparent border-none cursor-pointer ${
                 active === id
-                  ? "text-[#00FF41] active"
-                  : "text-[#4ade80] hover:text-[#00FF41]"
+                  ? "text-green-neon active"
+                  : "text-neutral-400 hover:text-green-neon"
               }`}
             >
               [{id}]
@@ -79,23 +72,25 @@ export default function Navbar() {
           onClick={() => setMenuOpen((v) => !v)}
           className="md:hidden flex flex-col justify-center items-center gap-[5px] w-8 h-8 bg-transparent border-none cursor-pointer p-0"
           aria-label="Menu"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
           <span
-            className="block w-6 h-[1.5px] bg-[#00FF41] transition-all duration-300 origin-center"
+            className="block w-6 h-[1.5px] bg-green-neon transition-all duration-300 origin-center"
             style={{
               transform: menuOpen ? "translateY(6.5px) rotate(45deg)" : "none",
               boxShadow: "0 0 6px #00FF41",
             }}
           />
           <span
-            className="block w-6 h-[1.5px] bg-[#00FF41] transition-all duration-300"
+            className="block w-6 h-[1.5px] bg-green-neon transition-all duration-300"
             style={{
               opacity: menuOpen ? 0 : 1,
               boxShadow: "0 0 6px #00FF41",
             }}
           />
           <span
-            className="block w-6 h-[1.5px] bg-[#00FF41] transition-all duration-300 origin-center"
+            className="block w-6 h-[1.5px] bg-green-neon transition-all duration-300 origin-center"
             style={{
               transform: menuOpen
                 ? "translateY(-6.5px) rotate(-45deg)"
@@ -107,6 +102,7 @@ export default function Navbar() {
       </nav>
 
       <div
+        id="mobile-menu"
         className="fixed inset-0 z-40 md:hidden transition-all duration-300"
         style={{
           background: "rgba(8,8,8,0.97)",
@@ -133,8 +129,8 @@ export default function Navbar() {
         />
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full gap-2 pt-[58px]">
-          <p className="font-mono text-[0.7rem] text-[#4ade80] mb-6 tracking-[0.15em]">
-            <span className="text-[#00FF41]">root@portfolio</span>:~${" "}
+          <p className="font-mono text-[0.7rem] text-green-400 mb-6 tracking-[0.15em]">
+            <span className="text-green-neon">root@portfolio</span>:~${" "}
             <span className="animate-blink">_</span>
           </p>
 
@@ -144,7 +140,7 @@ export default function Navbar() {
               onClick={() => scrollTo(id)}
               className="font-mono text-[1.2rem] tracking-[0.2em] uppercase bg-transparent border-none cursor-pointer transition-all duration-200 py-3 px-8 w-full text-center"
               style={{
-                color: active === id ? "#00FF41" : "#4ade80",
+                color: active === id ? "#00FF41" : "#a3a3a3",
                 textShadow: active === id ? "0 0 8px #00FF41" : "none",
                 transform: menuOpen ? "translateX(0)" : "translateX(-20px)",
                 opacity: menuOpen ? 1 : 0,
@@ -157,7 +153,7 @@ export default function Navbar() {
               </span>
               {id}
               {active === id && (
-                <span className="ml-2 text-[#00FF41] text-sm">◀</span>
+                <span className="ml-2 text-green-neon text-sm">◀</span>
               )}
             </button>
           ))}
