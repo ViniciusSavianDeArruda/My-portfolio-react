@@ -9,7 +9,7 @@ declare module "*.jpeg";
 declare module "*.svg";
 declare module "*.webp";
 
-declare module '*.css' {
+declare module "*.css" {
   const classes: { [key: string]: string };
   export default classes;
 }

@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 
-export default function useTypewriter(text = "Full Stack Developer", delay = 80, startDelay = 600) {
+export default function useTypewriter(
+  text = "Full Stack Developer",
+  delay = 80,
+  startDelay = 600,
+) {
   const [displayed, setDisplayed] = useState("");
 
   useEffect(() => {
