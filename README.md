@@ -1,6 +1,6 @@
 # Meu Portfolio Pessoal
 
-Portfólio pessoal desenvolvido com **React**, **TypeScript** e **Tailwind CSS**, com identidade visual no tema **hacker terminal** — fundo escuro, verde neon, efeito Matrix e animações estilo terminal.
+Portfólio pessoal desenvolvido com **React**, **TypeScript** e **Tailwind CSS**, com identidade visual no tema **hacker terminal** — fundo escuro, verde neon como acento e efeito Matrix no Hero.
 
 ---
 
@@ -10,41 +10,52 @@ Portfólio pessoal desenvolvido com **React**, **TypeScript** e **Tailwind CSS**
 - **TypeScript** — tipagem estática
 - **Tailwind CSS v3** — estilização utilitária
 - **Vite** — bundler e servidor de desenvolvimento
+- **ESLint + Prettier** — lint e formatação
 - **Simple Icons** (CDN) — ícones das tecnologias na seção de habilidades
 - **Google Fonts** — fontes Orbitron e Share Tech Mono
 
 ---
-
-## 🖼️ Demonstração do Portfólio
-
-![Demonstração do Portfólio](src/assets/HeroPortfolio.png)
 
 ## 📁 Estrutura do Projeto
 
 ```
 portfolio/
 ├── public/
+│   ├── projects/            # imagens dos cards de projeto
+│   ├── robots.txt
+│   └── sitemap.xml
 ├── src/
 │   ├── components/
-│   │   ├── Navbar.tsx         # Navegação fixa com menu hamburger mobile
-│   │   ├── Hero.tsx           # Seção inicial com efeito Matrix e typing animation
-│   │   ├── MatrixCanvas.tsx   # Canvas com animação de caracteres estilo Matrix
-│   │   ├── About.tsx          # Bio e tabela de informações pessoais
-│   │   ├── Formation.tsx      # Formação acadêmica
-│   │   ├── Skills.tsx         # Grid de ícones de tecnologias por categoria
-│   │   ├── Projects.tsx       # Cards de projetos com imagem e links
-│   │   ├── Contact.tsx        # Links de contato e e-mail
-│   │   ├── Footer.tsx         # Rodapé
-│   │   └── SectionLabel.tsx   # Componente reutilizável de título de seção
+│   │   ├── sections/        # "capítulos" da página, cada um usado 1x
+│   │   │   ├── Hero.tsx
+│   │   │   ├── About.tsx    # bio + status + formação (painel de cards)
+│   │   │   ├── Skills.tsx
+│   │   │   ├── Projects.tsx
+│   │   │   └── Contact.tsx
+│   │   └── ui/               # peças reutilizáveis / estrutura da interface
+│   │       ├── Navbar.tsx
+│   │       ├── Footer.tsx
+│   │       ├── BackToTop.tsx
+│   │       ├── MatrixCanvas.tsx
+│   │       ├── SectionLabel.tsx
+│   │       ├── Card.tsx
+│   │       ├── FormationCard.tsx
+│   │       └── icons.tsx
 │   ├── data/
-│   │   └── index.ts           # Todos os dados do portfólio (edite aqui!)
+│   │   └── index.ts          # todos os dados do portfólio (edite aqui!)
+│   ├── hooks/
+│   │   ├── useTypewriter.ts
+│   │   └── useActiveSection.ts
+│   ├── types/
+│   │   └── index.ts          # interfaces (Project, Skill, ContactLink, AboutRow...)
 │   ├── App.tsx
 │   ├── main.tsx
-│   └── index.css              # Animações e classes customizadas do Tailwind
+│   └── index.css             # entrada do Tailwind + classes custom
 ├── index.html
 ├── tailwind.config.ts
 ├── tsconfig.json
 ├── vite.config.ts
+├── eslint.config.js
 └── package.json
 ```
 
@@ -55,37 +66,43 @@ portfolio/
 ### Pré-requisitos
 
 - Node.js 18+
-- npm ou yarn
+- [pnpm](https://pnpm.io/) (o projeto fixa a versão em `packageManager` no `package.json`)
 
 ### Instalação
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seuuser/portfolio.git
+git clone https://github.com/ViniciusSavianDeArruda/My-portfolio-react.git
 
 # Entre na pasta
-cd portfolio
+cd My-portfolio-react
 
 # Instale as dependências
-npm install
+pnpm install
 
 # Inicie o servidor de desenvolvimento
-npm run dev
+pnpm dev
 ```
 
 O projeto estará disponível em `http://localhost:5173`
 
-### Build para produção
+### Scripts disponíveis
 
 ```bash
-npm run build
+pnpm dev       # servidor de desenvolvimento
+pnpm build     # build de produção (roda tsc + vite build)
+pnpm preview   # serve o build localmente
+pnpm lint      # ESLint
+pnpm format    # Prettier (formata o projeto inteiro)
 ```
+
+Um workflow de CI (`.github/workflows/ci.yml`) roda `lint` e `build` a cada push/PR.
 
 ---
 
 ## ✏️ Como personalizar
 
-Todos os dados do portfólio estão centralizados em **`src/data/index.ts`**. Edite esse arquivo para atualizar o conteúdo sem precisar mexer nos componentes.
+Todos os dados do portfólio estão centralizados em **`src/data/index.ts`**. Edite esse arquivo para atualizar o conteúdo sem precisar mexer nos componentes — os tipos ficam em `src/types/index.ts`.
 
 ### Projetos
 
@@ -96,23 +113,22 @@ export const PROJECTS: Project[] = [
     name: "Nome do Projeto",
     desc: "Descrição do projeto...",
     tech: ["React", "Node.js", "PostgreSQL"],
-    status: "PRODUCTION", // PRODUCTION | OPEN SOURCE | EM DEV
+    status: "PRODUCTION", // texto livre do badge (ex: PRODUCTION, OPEN SOURCE)
     statusColor: "#00FF41", // cor do badge
     github: "https://github.com/seuuser/projeto",
     demo: "https://seuprojeto.com", // opcional
-    preview: "https://url-da-screenshot.png", // imagem do card
-    url: "seuprojeto.com",
+    photo: "/projects/screenshot.png", // imagem do card, em public/projects/
   },
 ];
 ```
 
 ### Habilidades
 
-Adicione ou remova tecnologias usando os slugs do [Simple Icons](https://simpleicons.org):
+Adicione ou remova tecnologias usando os slugs do [Simple Icons](https://simpleicons.org). Se o ícone for escuro/preto por padrão (some no fundo escuro), adicione o slug em `LIGHT_OVERRIDE_ICONS` no topo de `src/components/sections/Skills.tsx`:
 
 ```ts
-{ name: 'React', icon: 'react' },
-{ name: 'Next.js', icon: 'nextdotjs' },
+{ name: "React", icon: "react" },
+{ name: "Next.js", icon: "nextdotjs" },
 ```
 
 ### Contato
@@ -132,52 +148,51 @@ export const CONTACT_LINKS: ContactLink[] = [
 ];
 ```
 
-### Dados pessoais
+### Dados pessoais / Status
 
-Edite `ABOUT_ROWS` em `src/data/index.ts` para atualizar nome, localização, especialidade etc.
+Edite `ABOUT_ROWS` em `src/data/index.ts` para atualizar nome, localização, especialidade etc. O campo opcional `dot` (`"amber"` ou `"blue"`) controla a cor da bolinha na frente de cada linha no card de Status; sem `dot`, usa o verde padrão.
 
 ### Hero
 
-Em `src/components/Hero.tsx`, troque:
-
-- `SEU NOME` pelo seu nome real
-- Os textos das linhas de digitação
-- As URLs do GitHub e LinkedIn nos botões CTA
+Em `src/components/sections/Hero.tsx`, troque o nome, os textos das linhas de digitação e as URLs do GitHub/LinkedIn nos botões de CTA.
 
 ---
 
 ## 🎨 Identidade Visual
 
-| Elemento       | Valor                          |
-| -------------- | ------------------------------ |
-| Cor principal  | `#00FF41` (verde neon)         |
-| Cor secundária | `#4ade80` (verde médio)        |
-| Texto de corpo | `#bbf7d0` (verde claro)        |
-| Fundo          | `#080808` (preto quase puro)   |
-| Fundo de cards | `#0a0a0a`                      |
-| Fonte display  | Orbitron (títulos e logo)      |
-| Fonte mono     | Share Tech Mono (todo o resto) |
+O verde neon é usado como **acento** (títulos, prompts, links, badges, hover), não como cor de base — bordas, divisores e texto secundário usam cinza neutro.
+
+| Elemento              | Valor                              |
+| --------------------- | ---------------------------------- |
+| Verde neon (destaque) | `#00FF41`                          |
+| Verde secundário      | `#00AA2A`                          |
+| Fundo                 | `#080808`                          |
+| Fundo de cards        | `#0a0a0a`                          |
+| Bordas / divisores    | tons de cinza neutro (`neutral-*`) |
+| Texto corrido         | cinza claro (`neutral-200`)        |
+| Fonte display         | Orbitron (títulos e logo)          |
+| Fonte mono            | Share Tech Mono (todo o resto)     |
+
+As cores ficam centralizadas em `tailwind.config.ts` (`theme.extend.colors`) — evite usar hex direto no JSX quando já existir um token equivalente.
 
 ---
 
 ## 📱 Responsividade
 
 - **Mobile** — menu hamburger com overlay fullscreen animado
-- **Tablet** — layout adaptado em 2 colunas onde aplicável
-- **Desktop** — navegação horizontal, projetos em lista alternada
+- **Desktop** — navegação horizontal, projetos em lista alternada, painel do About em cards lado a lado
 
 ---
 
 ## 🗂️ Seções
 
-| Seção         | Descrição                                                |
-| ------------- | -------------------------------------------------------- |
-| **Home**      | Hero com efeito Matrix, typing animation e botões de CTA |
-| **About**     | Bio pessoal e tabela de informações                      |
-| **Formatiom** | Formação acadêmica                                       |
-| **Skills**    | Ícones das tecnologias agrupados por categoria           |
-| **Projects**  | Cards com imagem, descrição, stack e links               |
-| **Contact**   | E-mail e links para redes sociais                        |
+| Seção        | Descrição                                                                                |
+| ------------ | ---------------------------------------------------------------------------------------- |
+| **Home**     | Hero com efeito Matrix, typing animation e botões de CTA                                 |
+| **About**    | Bio, status (localização, disponibilidade etc.) e formação acadêmica, em painel de cards |
+| **Skills**   | Ícones das tecnologias agrupados por categoria                                           |
+| **Projects** | Cards com imagem, descrição, stack e links                                               |
+| **Contact**  | E-mail e links para redes sociais                                                        |
 
 ---
 
@@ -186,16 +201,15 @@ Em `src/components/Hero.tsx`, troque:
 ### Vercel (recomendado)
 
 1. Suba o projeto para o GitHub
-2. Acesse [vercel.com]() e importe o repositório
+2. Acesse [vercel.com](https://vercel.com) e importe o repositório
 3. A Vercel detecta o Vite automaticamente — clique em **Deploy**
-4. Pronto! URL gerada automaticamente
 
-   Deploy do portfolio: https://viniciusarruda.dev/
+Deploy atual: https://viniciusarruda.dev/
 
 ### Netlify
 
 ```bash
-npm run build
+pnpm build
 # Arraste a pasta /dist para netlify.com/drop
 ```
 
@@ -207,4 +221,4 @@ Este projeto é de uso pessoal. Sinta-se livre para usar como referência e adap
 
 ---
 
-Desenvolvido por **Vinicius Arrruda** — [https://github.com/ViniciusSavianDeArruda]()
+Desenvolvido por **Vinicius Arruda** — [github.com/ViniciusSavianDeArruda](https://github.com/ViniciusSavianDeArruda)
