@@ -1,27 +1,11 @@
 import { useEffect, useState } from "react";
+import useActiveSection from "../../hooks/useActiveSection";
 
 const NAV_ITEMS = ["home", "about", "skills", "projects", "contact"] as const;
 
 export default function Navbar() {
-  const [active, setActive] = useState<string>("home");
+  const active = useActiveSection(NAV_ITEMS);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-    NAV_ITEMS.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActive(id);
-        },
-        { threshold: 0.4 },
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
-    return () => observers.forEach((o) => o.disconnect());
-  }, []);
 
   useEffect(() => {
     const onResize = () => {
