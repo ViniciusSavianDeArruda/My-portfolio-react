@@ -25,3 +25,10 @@ export interface ContactLink {
   value: string;
   href: string;
 }
+
+export interface AboutRow {
+  label: string;
+  value: string;
+  highlight?: boolean;
+  dot?: "amber" | "blue";
+}

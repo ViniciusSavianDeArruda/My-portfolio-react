@@ -1,4 +1,4 @@
-import { ContactLink, Project, SkillCategory } from "../types";
+import { AboutRow, ContactLink, Project, SkillCategory } from "../types";
 
 export const PROJECTS: Project[] = [
   {
@@ -87,7 +87,7 @@ export const CONTACT_LINKS: ContactLink[] = [
   },
 ];
 
-export const ABOUT_ROWS = [
+export const ABOUT_ROWS: AboutRow[] = [
   { label: "NOME", value: "Vinicius Arruda" },
   { label: "FUNÇÃO", value: "Full Stack Developer", dot: "amber" },
   {
