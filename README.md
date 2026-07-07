@@ -4,7 +4,7 @@ Portfólio pessoal desenvolvido com **React**, **TypeScript** e **Tailwind CSS**
 
 ---
 
-## 🚀 Tecnologias
+## Tecnologias
 
 - **React 18** — biblioteca de interface
 - **TypeScript** — tipagem estática
@@ -16,7 +16,7 @@ Portfólio pessoal desenvolvido com **React**, **TypeScript** e **Tailwind CSS**
 
 ---
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 portfolio/
@@ -61,7 +61,7 @@ portfolio/
 
 ---
 
-## ⚙️ Como rodar localmente
+## Como rodar localmente
 
 ### Pré-requisitos
 
@@ -100,7 +100,7 @@ Um workflow de CI (`.github/workflows/ci.yml`) roda `lint` e `build` a cada push
 
 ---
 
-## ✏️ Como personalizar
+## Como personalizar
 
 Todos os dados do portfólio estão centralizados em **`src/data/index.ts`**. Edite esse arquivo para atualizar o conteúdo sem precisar mexer nos componentes — os tipos ficam em `src/types/index.ts`.
 
@@ -158,7 +158,7 @@ Em `src/components/sections/Hero.tsx`, troque o nome, os textos das linhas de di
 
 ---
 
-## 🎨 Identidade Visual
+## Identidade Visual
 
 O verde neon é usado como **acento** (títulos, prompts, links, badges, hover), não como cor de base — bordas, divisores e texto secundário usam cinza neutro.
 
@@ -177,14 +177,14 @@ As cores ficam centralizadas em `tailwind.config.ts` (`theme.extend.colors`) —
 
 ---
 
-## 📱 Responsividade
+## Responsividade
 
 - **Mobile** — menu hamburger com overlay fullscreen animado
 - **Desktop** — navegação horizontal, projetos em lista alternada, painel do About em cards lado a lado
 
 ---
 
-## 🗂️ Seções
+## Seções
 
 | Seção        | Descrição                                                                                |
 | ------------ | ---------------------------------------------------------------------------------------- |
@@ -196,7 +196,7 @@ As cores ficam centralizadas em `tailwind.config.ts` (`theme.extend.colors`) —
 
 ---
 
-## 📦 Deploy
+## Deploy
 
 ### Vercel (recomendado)
 
@@ -215,7 +215,7 @@ pnpm build
 
 ---
 
-## 📄 Licença
+## Licença
 
 Este projeto é de uso pessoal. Sinta-se livre para usar como referência e adaptá-lo ao seu próprio portfólio.
 
