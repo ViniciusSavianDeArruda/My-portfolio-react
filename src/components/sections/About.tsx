@@ -1,8 +1,10 @@
 import { ABOUT_ROWS } from "../../data";
+import type { AboutRow } from "../../types";
 import SectionLabel from "../ui/SectionLabel";
-import Formation from "./Formation";
+import Card from "../ui/Card";
+import FormationCard from "../ui/FormationCard";
 
-const DOT_COLORS: Record<string, string> = {
+const DOT_COLORS: Record<NonNullable<AboutRow["dot"]>, string> = {
   amber: "text-amber",
   blue: "text-blue-400",
 };
@@ -17,7 +19,7 @@ export default function About() {
         <SectionLabel cmd="cat README.md" title="about.exe" />
 
         <div className="grid gap-6">
-          <div className="bg-bg-2 border border-neutral-800 p-8 leading-[1.9] text-neutral-200 text-[0.88rem]">
+          <Card className="p-8 leading-[1.9] text-neutral-200 text-[0.88rem]">
             <p>
               Olá! Sou um desenvolvedor{" "}
               <strong className="text-green-neon">Full Stack</strong> em
@@ -34,10 +36,10 @@ export default function About() {
               para crescer como desenvolvedor, contribuindo com projetos
               inovadores e de impacto real.
             </p>
-          </div>
+          </Card>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-bg-2 border border-neutral-800 p-6">
+            <Card className="p-6">
               <p className="font-mono text-[0.68rem] text-green-400 tracking-[0.22em] mb-4 border-b border-neutral-900 pb-2">
                 STATUS
               </p>
@@ -47,9 +49,7 @@ export default function About() {
                     key={label}
                     className="flex items-center gap-2 text-[0.83rem]"
                   >
-                    <span
-                      className={DOT_COLORS[dot ?? ""] ?? "text-green-neon"}
-                    >
+                    <span className={dot ? DOT_COLORS[dot] : "text-green-neon"}>
                       ●
                     </span>
                     <span
@@ -64,9 +64,9 @@ export default function About() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Card>
 
-            <Formation />
+            <FormationCard />
           </div>
         </div>
       </div>

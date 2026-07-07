@@ -1,15 +1,8 @@
-export default function Formation() {
+import Card from "./Card";
+
+export default function FormationCard() {
   return (
-    <div
-      className="h-full flex flex-col justify-between gap-4 bg-bg-2 border border-neutral-800 p-6 transition-all duration-300 hover:border-green-neon cursor-default"
-      onMouseEnter={(e) => {
-        (e.currentTarget as HTMLDivElement).style.boxShadow =
-          "0 0 20px rgba(0,255,65,0.08)";
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
-      }}
-    >
+    <Card className="h-full flex flex-col justify-between gap-4 p-6 hover-glow hover:border-green-neon cursor-default">
       <div>
         <p className="font-mono text-[0.68rem] text-green-400 tracking-[0.22em] mb-4 border-b border-neutral-900 pb-2">
           FORMAÇÃO
@@ -24,6 +17,6 @@ export default function Formation() {
       <span className="self-start font-mono text-[0.65rem] px-[10px] py-[3px] tracking-[0.1em] border border-amber text-amber whitespace-nowrap">
         EM ANDAMENTO
       </span>
-    </div>
+    </Card>
   );
 }
