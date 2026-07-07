@@ -1,6 +1,7 @@
 import { PROJECTS } from "../../data";
 import SectionLabel from "../ui/SectionLabel";
 import { GithubIcon, ExternalIcon } from "../ui/icons";
+import Card from "../ui/Card";
 
 const linkCls =
   "inline-flex items-center gap-[0.45rem] font-mono text-[0.75rem] text-green-400 no-underline border border-neutral-700 px-3 py-1.5 transition-all duration-200 hover:text-green-neon hover:border-green-neon";
@@ -16,16 +17,9 @@ export default function Projects() {
 
         <div className="flex flex-col gap-5">
           {PROJECTS.map((project, i) => (
-            <div
+            <Card
               key={project.id}
-              className="group bg-bg-2 border border-neutral-800 overflow-hidden transition-all duration-300 hover:border-green-neon cursor-default"
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLDivElement).style.boxShadow =
-                  "0 0 22px rgba(0,255,65,0.1)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
-              }}
+              className="group overflow-hidden hover-glow hover:border-green-neon cursor-default"
             >
               <div
                 className={`flex flex-col md:flex-row ${
@@ -104,7 +98,7 @@ export default function Projects() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

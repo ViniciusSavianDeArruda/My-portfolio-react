@@ -1,6 +1,7 @@
 import { SKILL_CATEGORIES } from "../../data";
 import type { Skill } from "../../types";
 import SectionLabel from "../ui/SectionLabel";
+import Card from "../ui/Card";
 
 // Brand logos that default to black/near-black and would vanish on the dark background
 const LIGHT_OVERRIDE_ICONS = new Set([
@@ -43,10 +44,7 @@ export default function Skills() {
         <SectionLabel cmd="ls -la ./technologies" title="skills.json" />
         <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-8">
           {SKILL_CATEGORIES.map((cat) => (
-            <div
-              key={cat.label}
-              className="bg-bg-2 border border-neutral-800 p-3"
-            >
+            <Card key={cat.label} className="p-3">
               <p className="font-mono text-[0.68rem] text-green-400 tracking-[0.22em] mb-5 border-b border-neutral-900 pb-2">
                 {cat.label}
               </p>
@@ -55,7 +53,7 @@ export default function Skills() {
                   <SkillIcon key={skill.name} skill={skill} />
                 ))}
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

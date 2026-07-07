@@ -31,14 +31,7 @@ export default function Contact() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center px-8 py-6 border border-neutral-800 bg-bg-2 no-underline min-w-[175px] gap-2 transition-all duration-300 hover:border-green-neon"
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow =
-                  "0 0 20px rgba(0,255,65,0.1)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
-              }}
+              className="flex flex-col items-center px-8 py-6 border border-neutral-800 bg-bg-2 no-underline min-w-[175px] gap-2 hover-glow hover:border-green-neon"
             >
               <span className="font-mono text-[0.62rem] text-green-400 tracking-[0.2em]">
                 {link.label}
