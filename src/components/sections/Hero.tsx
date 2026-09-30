@@ -1,100 +1,93 @@
-import useTypewriter from "../../hooks/useTypewriter";
-import MatrixCanvas from "../ui/MatrixCanvas";
-import { GithubIcon, LinkedinIcon } from "../ui/icons";
+import GeometricBackground from "../ui/GeometricBackground";
+import TechMarquee from "../ui/TechMarquee";
+import { GithubIcon, LinkedinIcon, ProjectsIcon } from "../ui/icons";
+import {
+  StaggerReveal,
+  StaggerRevealHeadline,
+  StaggerRevealItem,
+} from "../motion-ui/stagger-reveal";
 
 export default function Hero() {
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
-  const displayed = useTypewriter();
-
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-[60px] overflow-hidden grid-bg"
+      className="hero-ambient relative flex min-h-[max(760px,100svh)] items-center overflow-hidden bg-[#07080B] pt-[58px] md:min-h-[max(680px,100svh)]"
     >
-      <MatrixCanvas />
+      <GeometricBackground />
 
-      {/* Conteúdo centralizado */}
-      <div className="relative z-10 px-[clamp(1.5rem,5vw,4rem)] py-16 max-w-[860px] mx-auto flex flex-col items-center text-center">
-        <p className="font-mono text-[0.78rem] text-green-400 mb-6">
-          <span className="text-green-neon">root@portfolio</span>
-          <span className="text-[#555]">:~$</span>
-          <span className="text-green-300"> ./init.sh</span>
-        </p>
+      <div className="relative z-10 mx-auto w-full max-w-[1180px] px-[clamp(1.5rem,6vw,5rem)] py-20 pb-32 md:py-24 md:pb-28">
+        <StaggerReveal className="max-w-[720px]">
+          <StaggerRevealItem className="mb-6">
+            <p className="font-mono text-[0.72rem] tracking-[0.12em] text-[#9AACFF]">
+              <span className="mr-2 text-[#5B7CFF]">&gt;</span>
+              system.ready
+            </p>
+          </StaggerRevealItem>
 
-        <h1 className="font-orbitron font-black text-[clamp(2.2rem,7vw,5.2rem)] leading-[1.05] mb-4 tracking-[-0.01em] text-green-neon glow animate-glitch">
-          Vinicius Arruda
-        </h1>
+          <StaggerRevealItem className="mb-2">
+            <p className="font-hero text-[clamp(0.9375rem,1.2vw,1rem)] font-medium tracking-[0.01em] text-[#D7DBE5]">
+              Olá, eu sou o
+            </p>
+          </StaggerRevealItem>
 
-        <p className="font-orbitron text-[clamp(0.65rem,1.5vw,0.88rem)] text-green-dim tracking-[0.35em] uppercase mb-10 h-6">
-          ▶ {displayed}
-          <span className="animate-blink text-green-neon">|</span> ◀
-        </p>
+          <StaggerRevealHeadline className="hero-name relative font-hero text-[clamp(3rem,7.2vw,6.6rem)] font-semibold leading-[0.96] tracking-[-0.065em] text-[#F4F6FB]">
+            Vinicius Arruda
+          </StaggerRevealHeadline>
 
-        <div className="font-mono text-[clamp(0.8rem,1.4vw,0.88rem)] leading-[2.2] mb-12 flex flex-col items-center">
-          <div className="opacity-0 animate-[fadeUp_0.5s_ease_0.5s_forwards]">
-            <span className="text-green-300">$ </span>
-            Construindo soluções completas — do banco de dados à interface.
-            <span className="animate-blink text-green-neon"> █</span>
-          </div>
-          <div className="opacity-0 animate-[fadeUp_0.5s_ease_1.8s_forwards]">
-            <span className="text-green-300">$ </span>
-            Código limpo. Arquitetura sólida. Performance real.
-            <span className="animate-blink text-green-neon"> █</span>
-          </div>
-        </div>
+          <StaggerRevealItem>
+            <h2 className="mt-7 font-hero text-[clamp(1.35rem,2.5vw,2.05rem)] font-normal leading-[1.18] tracking-[-0.035em] text-[#F4F6FB]">
+              Desenvolvedor Full Stack criando aplicações web modernas.
+            </h2>
+          </StaggerRevealItem>
 
-        <div className="flex gap-4 flex-wrap justify-center mb-14">
-          <a
-            href="https://github.com/ViniciusSavianDeArruda"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-[0.55rem] font-mono text-[0.82rem] px-7 py-[0.7rem] tracking-[0.14em] border border-green-neon text-green-neon bg-transparent hover:bg-green-neon hover:text-bg transition-all duration-200"
-          >
-            <GithubIcon size={16} />
-            GitHub
-          </a>
-          <a
-            href="https://www.linkedin.com/in/arrudavinicius/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-[0.55rem] font-mono text-[0.82rem] px-7 py-[0.7rem] tracking-[0.14em] border border-neutral-700 text-green-400 bg-transparent hover:border-green-dim hover:text-green-neon transition-all duration-200"
-          >
-            <LinkedinIcon size={16} />
-            LinkedIn
-          </a>
-        </div>
+          <StaggerRevealItem>
+            <p className="mt-6 max-w-[550px] font-hero text-[clamp(1rem,1.45vw,1.12rem)] leading-[1.65] text-[#9096A3]">
+              Desenvolvo produtos do frontend à arquitetura backend, com foco em
+              performance, experiência e qualidade.
+            </p>
+          </StaggerRevealItem>
 
-        <div className="font-mono text-[0.72rem] text-green-400 flex gap-8 flex-wrap justify-center">
-          <span>
-            <span className="text-green-neon">●</span> DISPONÍVEL PARA PROJETOS
-          </span>
-          <span>
-            <span className="text-amber">◆</span> BRASIL
-          </span>
-          <span>
-            <span className="text-blue-400">▶</span> FULL STACK
-          </span>
-        </div>
+          <StaggerRevealItem>
+            <div className="mt-9 flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onClick={() => scrollTo("projects")}
+                className="inline-flex min-h-11 items-center gap-2 rounded-md bg-[#5B7CFF] px-5 font-hero text-[0.9rem] font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-[#7691FF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9AACFF]"
+              >
+                <ProjectsIcon size={17} />
+                Ver projetos
+              </button>
+
+              <div className="flex flex-wrap items-center gap-6">
+                <a
+                  href="https://github.com/ViniciusSavianDeArruda"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center gap-2 px-3 font-hero text-[0.9rem] font-medium text-[#F4F6FB] transition duration-200 hover:-translate-y-px hover:text-[#9AACFF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9AACFF]"
+                >
+                  <GithubIcon size={17} />
+                  GitHub
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/arrudavinicius/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center gap-2 px-3 font-hero text-[0.9rem] font-medium text-[#F4F6FB] transition duration-200 hover:-translate-y-px hover:text-[#9AACFF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9AACFF]"
+                >
+                  <LinkedinIcon size={17} />
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+          </StaggerRevealItem>
+        </StaggerReveal>
       </div>
 
-      {/* Scroll indicator */}
-      <button
-        onClick={() => scrollTo("about")}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 cursor-pointer border-none bg-transparent"
-        aria-label="Scroll para baixo"
-      >
-        <span className="font-mono text-[0.6rem] text-neutral-600 tracking-[0.15em]">
-          SCROLL
-        </span>
-        <span
-          className="text-green-neon text-lg animate-bounce"
-          style={{ textShadow: "0 0 8px #00FF41" }}
-        >
-          ↓
-        </span>
-      </button>
+      <TechMarquee />
     </section>
   );
 }
