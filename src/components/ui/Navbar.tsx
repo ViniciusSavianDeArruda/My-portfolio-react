@@ -1,148 +1,130 @@
-import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useState, type ComponentType } from "react";
 import useActiveSection from "../../hooks/useActiveSection";
+import { CodeIcon, HomeIcon, MailIcon, ProjectsIcon, UserIcon } from "./icons";
 
-const NAV_ITEMS = ["home", "about", "skills", "projects", "contact"] as const;
+interface NavItem {
+  id: "home" | "about" | "skills" | "projects" | "contact";
+  label: string;
+  Icon: ComponentType<{ size?: number }>;
+}
+
+const NAV_ITEMS: NavItem[] = [
+  { id: "home", label: "Início", Icon: HomeIcon },
+  { id: "about", label: "Sobre", Icon: UserIcon },
+  { id: "skills", label: "Stack", Icon: CodeIcon },
+  { id: "projects", label: "Projetos", Icon: ProjectsIcon },
+  { id: "contact", label: "Contato", Icon: MailIcon },
+];
+
+const NAV_IDS = NAV_ITEMS.map(({ id }) => id);
+
+interface DockItemProps {
+  item: NavItem;
+  active: string;
+  mobile?: boolean;
+  onNavigate: (id: NavItem["id"]) => void;
+}
+
+function DockItem({ item, active, mobile = false, onNavigate }: DockItemProps) {
+  const prefersReducedMotion = useReducedMotion();
+  const [isHovered, setIsHovered] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const isActive = active === item.id;
+  const showTooltip = !mobile && (isHovered || isFocused);
+  const { Icon } = item;
+
+  return (
+    <motion.button
+      type="button"
+      aria-label={item.label}
+      aria-current={isActive ? "page" : undefined}
+      onClick={() => onNavigate(item.id)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
+      whileHover={prefersReducedMotion ? undefined : { scale: 1.08, y: -3 }}
+      whileTap={prefersReducedMotion ? undefined : { scale: 0.96 }}
+      transition={{ type: "spring", stiffness: 400, damping: 22 }}
+      className={`dock-item group relative inline-flex overflow-visible items-center justify-center bg-transparent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#9AACFF] ${
+        mobile ? "h-[52px] flex-1" : "h-10 w-10 rounded-[10px]"
+      } ${isActive ? "text-[#5B7CFF]" : "text-[#9096A3] hover:text-[#F4F6FB]"}`}
+    >
+      <Icon size={mobile ? 19 : 18} />
+      {isActive && (
+        <span
+          className={`absolute h-1 w-1 rounded-full bg-[#5B7CFF] ${
+            mobile ? "bottom-1.5" : "bottom-1"
+          }`}
+          aria-hidden="true"
+        />
+      )}
+      <AnimatePresence>
+        {showTooltip && (
+          <motion.span
+            className="dock-tooltip"
+            aria-hidden="true"
+            style={{ x: "-50%" }}
+            initial={
+              prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: -4 }
+            }
+            animate={
+              prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }
+            }
+            exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: -4 }}
+            transition={{ duration: 0.16, ease: "easeOut" }}
+          >
+            {item.label}
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </motion.button>
+  );
+}
 
 export default function Navbar() {
-  const active = useActiveSection(NAV_ITEMS);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const active = useActiveSection(NAV_IDS);
 
-  useEffect(() => {
-    const onResize = () => {
-      if (window.innerWidth >= 768) setMenuOpen(false);
-    };
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [menuOpen]);
-
-  const scrollTo = (id: string) => {
-    setMenuOpen(false);
-    setTimeout(() => {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    }, 300);
-  };
+  const scrollTo = (id: NavItem["id"]) =>
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[rgba(8,8,8,0.95)] backdrop-blur-md border-b border-neutral-800 h-[58px] flex items-center justify-between px-[clamp(1.5rem,5vw,3.5rem)]">
-        <span className="font-orbitron text-base font-bold tracking-widest text-green-neon glow-sm">
-          &lt;DEV/&gt;
+      <nav
+        className="fixed left-0 right-0 top-[18px] z-50 hidden h-[52px] items-center px-[clamp(2.5rem,4vw,3rem)] md:flex"
+        aria-label="Navegação principal"
+      >
+        <span className="font-mono text-[0.82rem] font-semibold tracking-[0.1em] text-[#F4F6FB]">
+          &lt;DEV<span className="text-[#5B7CFF]">/</span>&gt;
         </span>
 
-        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 gap-[clamp(0.8rem,2.5vw,2rem)]">
-          {NAV_ITEMS.map((id) => (
-            <button
-              key={id}
-              onClick={() => scrollTo(id)}
-              className={`nav-underline font-mono text-[0.78rem] tracking-[0.12em] uppercase transition-colors duration-200 bg-transparent border-none cursor-pointer ${
-                active === id
-                  ? "text-green-neon active"
-                  : "text-neutral-400 hover:text-green-neon"
-              }`}
-            >
-              [{id}]
-            </button>
+        <div className="absolute left-1/2 flex -translate-x-1/2 items-center gap-1 overflow-visible rounded-[15px] border border-white/[0.08] bg-[rgba(10,12,17,0.72)] p-1.5 shadow-[0_8px_24px_rgba(0,0,0,0.16)] backdrop-blur-[16px]">
+          {NAV_ITEMS.map((item) => (
+            <DockItem
+              key={item.id}
+              item={item}
+              active={active}
+              onNavigate={scrollTo}
+            />
           ))}
         </div>
-
-        <button
-          onClick={() => setMenuOpen((v) => !v)}
-          className="md:hidden flex flex-col justify-center items-center gap-[5px] w-8 h-8 bg-transparent border-none cursor-pointer p-0"
-          aria-label="Menu"
-          aria-expanded={menuOpen}
-          aria-controls="mobile-menu"
-        >
-          <span
-            className="block w-6 h-[1.5px] bg-green-neon transition-all duration-300 origin-center"
-            style={{
-              transform: menuOpen ? "translateY(6.5px) rotate(45deg)" : "none",
-              boxShadow: "0 0 6px #00FF41",
-            }}
-          />
-          <span
-            className="block w-6 h-[1.5px] bg-green-neon transition-all duration-300"
-            style={{
-              opacity: menuOpen ? 0 : 1,
-              boxShadow: "0 0 6px #00FF41",
-            }}
-          />
-          <span
-            className="block w-6 h-[1.5px] bg-green-neon transition-all duration-300 origin-center"
-            style={{
-              transform: menuOpen
-                ? "translateY(-6.5px) rotate(-45deg)"
-                : "none",
-              boxShadow: "0 0 6px #00FF41",
-            }}
-          />
-        </button>
       </nav>
 
-      <div
-        id="mobile-menu"
-        className="fixed inset-0 z-40 md:hidden transition-all duration-300"
-        style={{
-          background: "rgba(8,8,8,0.97)",
-          opacity: menuOpen ? 1 : 0,
-          pointerEvents: menuOpen ? "all" : "none",
-          backdropFilter: "blur(12px)",
-        }}
+      <nav
+        className="fixed bottom-[calc(0.75rem+env(safe-area-inset-bottom))] left-3 right-3 z-50 flex items-center rounded-[15px] border border-white/[0.08] bg-[rgba(10,12,17,0.8)] p-1 shadow-[0_8px_24px_rgba(0,0,0,0.2)] backdrop-blur-[16px] md:hidden"
+        aria-label="Navegação principal"
       >
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.04) 2px,rgba(0,0,0,.04) 4px)",
-          }}
-        />
-
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(0,255,65,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,65,.015) 1px,transparent 1px)",
-            backgroundSize: "44px 44px",
-          }}
-        />
-
-        <div className="relative z-10 flex flex-col items-center justify-center h-full gap-2 pt-[58px]">
-          <p className="font-mono text-[0.7rem] text-green-400 mb-6 tracking-[0.15em]">
-            <span className="text-green-neon">root@portfolio</span>:~${" "}
-            <span className="animate-blink">_</span>
-          </p>
-
-          {NAV_ITEMS.map((id, i) => (
-            <button
-              key={id}
-              onClick={() => scrollTo(id)}
-              className="font-mono text-[1.2rem] tracking-[0.2em] uppercase bg-transparent border-none cursor-pointer transition-all duration-200 py-3 px-8 w-full text-center"
-              style={{
-                color: active === id ? "#00FF41" : "#a3a3a3",
-                textShadow: active === id ? "0 0 8px #00FF41" : "none",
-                transform: menuOpen ? "translateX(0)" : "translateX(-20px)",
-                opacity: menuOpen ? 1 : 0,
-                transition: `transform 0.3s ease ${i * 0.06}s, opacity 0.3s ease ${i * 0.06}s, color 0.2s`,
-                borderBottom: "1px solid #001500",
-              }}
-            >
-              <span className="text-[#1a5c35] text-[0.8rem] mr-2">
-                {String(i + 1).padStart(2, "0")}.
-              </span>
-              {id}
-              {active === id && (
-                <span className="ml-2 text-green-neon text-sm">◀</span>
-              )}
-            </button>
-          ))}
-        </div>
-      </div>
+        {NAV_ITEMS.map((item) => (
+          <DockItem
+            key={item.id}
+            item={item}
+            active={active}
+            mobile
+            onNavigate={scrollTo}
+          />
+        ))}
+      </nav>
     </>
   );
 }
