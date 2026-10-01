@@ -1,13 +1,14 @@
 export interface Project {
   id: string;
   name: string;
-  desc: string;
+  shortDesc: string;
+  fullDesc: string;
+  highlights: string[];
   tech: string[];
-  status: string;
-  statusColor: string;
+  type: string;
   github: string;
   demo?: string;
-  photo: string;
+  images: string[];
 }
 
 export interface Skill {
@@ -22,13 +23,5 @@ export interface SkillCategory {
 
 export interface ContactLink {
   label: string;
-  value: string;
   href: string;
-}
-
-export interface AboutRow {
-  label: string;
-  value: string;
-  highlight?: boolean;
-  dot?: "amber" | "blue";
 }
