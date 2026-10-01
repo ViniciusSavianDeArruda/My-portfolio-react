@@ -9,7 +9,7 @@ import Navbar from "./components/ui/Navbar";
 
 export default function App() {
   return (
-    <div className="bg-bg min-h-screen text-neutral-300 font-mono">
+    <div className="min-h-screen">
       <Navbar />
       <Hero />
       <About />

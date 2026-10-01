@@ -93,7 +93,6 @@ export default function GeometricBackground() {
             y1="154"
             x2="1000"
             y2="154"
-            className="geometric-line geometric-line--dashed"
             stroke="#6F86FF"
             strokeDasharray="1 9"
             strokeLinecap="round"
@@ -105,7 +104,6 @@ export default function GeometricBackground() {
             y1="336"
             x2="1000"
             y2="336"
-            className="geometric-line geometric-line--solid"
             stroke="#536079"
             strokeDasharray="none"
             strokeWidth="0.5"
@@ -116,7 +114,6 @@ export default function GeometricBackground() {
             y1="567"
             x2="1000"
             y2="567"
-            className="geometric-line geometric-line--dashed"
             stroke="#6F86FF"
             strokeDasharray="1 9"
             strokeLinecap="round"
@@ -128,7 +125,6 @@ export default function GeometricBackground() {
             y1="0"
             x2="200"
             y2="700"
-            className="geometric-line geometric-line--solid"
             stroke="#536079"
             strokeDasharray="none"
             strokeWidth="0.5"
@@ -139,7 +135,6 @@ export default function GeometricBackground() {
             y1="0"
             x2="680"
             y2="700"
-            className="geometric-line geometric-line--dashed"
             stroke="#6F86FF"
             strokeDasharray="1 9"
             strokeLinecap="round"
@@ -151,7 +146,6 @@ export default function GeometricBackground() {
             y1="0"
             x2="820"
             y2="700"
-            className="geometric-line geometric-line--solid"
             stroke="#536079"
             strokeDasharray="none"
             strokeWidth="0.5"
@@ -203,6 +197,7 @@ export default function GeometricBackground() {
             className="floating-dot floating-four"
           />
         </g>
+
       </svg>
       <div className="geometric-mouse-light" />
     </div>
