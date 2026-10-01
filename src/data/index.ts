@@ -27,7 +27,7 @@ export const PROJECTS: Project[] = [
     type: "Projeto pessoal",
     github: "https://github.com/ViniciusSavianDeArruda/facilita-oab-app",
     demo: "https://facilita-oab.vercel.app",
-    images: ["/projects/facilita-oab.png"],
+    images: ["/images/projects/facilita-oab.png"],
   },
   {
     id: "02",
@@ -54,7 +54,7 @@ export const PROJECTS: Project[] = [
     type: "Projeto pessoal",
     github: "https://github.com/ViniciusSavianDeArruda/Fitnnes-frontend",
     demo: "https://app.fitnnesapp.online",
-    images: ["/projects/fitnnesai.png"],
+    images: ["/images/projects/fitnnes-ai.png"],
   },
   {
     id: "03",
@@ -74,7 +74,7 @@ export const PROJECTS: Project[] = [
     github:
       "https://github.com/ViniciusSavianDeArruda/SistemaDeGerenciamentoDeAcervo_MuseuTrezeDeMaio",
     demo: "https://www.youtube.com/watch?v=h1TVhw8w6M8",
-    images: ["/projects/museu.png"],
+    images: ["/images/projects/museu-treze-de-maio.png"],
   },
 ];
 

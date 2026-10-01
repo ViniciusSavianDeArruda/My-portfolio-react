@@ -1,6 +1,6 @@
 import { motion, useReducedMotion, type Variants } from "motion/react";
 
-const PROFILE_IMAGE = "/About-eu.jpeg";
+const PROFILE_IMAGE = "/images/profile/about-eu.jpeg";
 
 const METADATA = [
   { label: "LOCALIZAÇÃO", value: "Santa Maria — RS, Brasil" },
