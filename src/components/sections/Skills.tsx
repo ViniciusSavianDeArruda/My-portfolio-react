@@ -1,9 +1,7 @@
+import { motion, useReducedMotion, type Variants } from "motion/react";
 import { SKILL_CATEGORIES } from "../../data";
 import type { Skill } from "../../types";
-import SectionLabel from "../ui/SectionLabel";
-import Card from "../ui/Card";
 
-// Brand logos that default to black/near-black and would vanish on the dark background
 const LIGHT_OVERRIDE_ICONS = new Set([
   "nextdotjs",
   "github",
@@ -12,22 +10,22 @@ const LIGHT_OVERRIDE_ICONS = new Set([
   "prisma",
 ]);
 
-function SkillIcon({ skill }: { skill: Skill }) {
+function SkillItem({ skill }: { skill: Skill }) {
   const src = LIGHT_OVERRIDE_ICONS.has(skill.icon)
     ? `https://cdn.simpleicons.org/${skill.icon}/ffffff`
     : `https://cdn.simpleicons.org/${skill.icon}`;
 
   return (
-    <div className="group flex flex-col items-center gap-[0.45rem] p-3 border border-transparent hover:border-neutral-700 hover:bg-[rgba(0,255,65,0.05)] transition-all duration-200 cursor-default">
+    <div className="group flex flex-col items-center gap-2.5 rounded-lg px-2 py-3 transition-all duration-200 hover:bg-white/[0.03]">
       <img
         src={src}
-        alt={skill.name}
-        width={36}
-        height={36}
+        alt=""
+        width={34}
+        height={34}
         loading="lazy"
-        className="icon-hover w-9 h-9"
+        className="h-[34px] w-[34px] transition-transform duration-200 group-hover:-translate-y-0.5"
       />
-      <span className="font-mono text-[0.62rem] text-green-400 group-hover:text-green-neon text-center tracking-[0.06em] transition-colors duration-200 leading-tight">
+      <span className="font-hero text-center text-[0.82rem] leading-tight text-[#A6ACB8] transition-colors duration-200 group-hover:text-[#F4F6FB]">
         {skill.name}
       </span>
     </div>
@@ -35,28 +33,84 @@ function SkillIcon({ skill }: { skill: Skill }) {
 }
 
 export default function Skills() {
+  const shouldReduceMotion = useReducedMotion();
+
+  const itemVariants: Variants = shouldReduceMotion
+    ? { hidden: { opacity: 1, y: 0 }, visible: { opacity: 1, y: 0 } }
+    : {
+        hidden: { opacity: 0, y: 18 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+        },
+      };
+
+  const dividerVariants: Variants = shouldReduceMotion
+    ? { hidden: { scaleX: 1 }, visible: { scaleX: 1 } }
+    : {
+        hidden: { scaleX: 0 },
+        visible: {
+          scaleX: 1,
+          transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+        },
+      };
+
   return (
     <section
       id="skills"
-      className="py-24 px-[clamp(1.5rem,5vw,4rem)] border-t border-neutral-900"
+      className="skills-ambient px-[clamp(1.5rem,5vw,4rem)] py-20 md:py-28"
+      aria-labelledby="skills-title"
     >
-      <div className="max-w-[920px] mx-auto">
-        <SectionLabel cmd="ls -la ./technologies" title="skills.json" />
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-8">
+      <motion.div
+        className="mx-auto max-w-[1160px]"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.12 }}
+        variants={{
+          hidden: {},
+          visible: {
+            transition: { staggerChildren: shouldReduceMotion ? 0 : 0.1 },
+          },
+        }}
+      >
+        <motion.div variants={itemVariants} className="max-w-[620px]">
+          <p className="font-mono text-[0.72rem] tracking-[0.14em] text-[#9AACFF]">
+            03 / STACK
+          </p>
+          <h2
+            id="skills-title"
+            className="mt-5 font-hero text-[clamp(2.2rem,4.5vw,4rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-[#F4F6FB]"
+          >
+            Tecnologias que uso
+            <br />
+            para construir.
+          </h2>
+          <p className="mt-6 font-hero text-[clamp(1rem,1.3vw,1.08rem)] leading-[1.65] text-[#A6ACB8]">
+            Ferramentas que utilizo em projetos — do frontend à API,
+            dados e infraestrutura.
+          </p>
+        </motion.div>
+
+        <div className="mt-14 grid gap-x-16 gap-y-14 md:grid-cols-2">
           {SKILL_CATEGORIES.map((cat) => (
-            <Card key={cat.label} className="p-3">
-              <p className="font-mono text-[0.68rem] text-green-400 tracking-[0.22em] mb-5 border-b border-neutral-900 pb-2">
+            <motion.div key={cat.label} variants={itemVariants}>
+              <motion.div
+                variants={dividerVariants}
+                className="h-px w-full origin-left bg-white/[0.07]"
+              />
+              <p className="mt-4 font-mono text-[0.65rem] tracking-[0.14em] text-[#9AACFF]">
                 {cat.label}
               </p>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="mt-5 grid grid-cols-3 gap-x-2 gap-y-1 sm:grid-cols-4 lg:grid-cols-5">
                 {cat.skills.map((skill) => (
-                  <SkillIcon key={skill.name} skill={skill} />
+                  <SkillItem key={skill.name} skill={skill} />
                 ))}
               </div>
-            </Card>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

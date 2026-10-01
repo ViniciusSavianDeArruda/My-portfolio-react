@@ -1,11 +1,11 @@
-import GeometricBackground from "../ui/GeometricBackground";
-import TechMarquee from "../ui/TechMarquee";
-import { GithubIcon, LinkedinIcon, ProjectsIcon } from "../ui/icons";
 import {
   StaggerReveal,
   StaggerRevealHeadline,
   StaggerRevealItem,
 } from "../motion-ui/stagger-reveal";
+import GeometricBackground from "../ui/GeometricBackground";
+import TechMarquee from "../ui/TechMarquee";
+import { GithubIcon, LinkedinIcon, ProjectsIcon } from "../ui/icons";
 
 export default function Hero() {
   const scrollTo = (id: string) =>
@@ -66,7 +66,7 @@ export default function Hero() {
                   href="https://github.com/ViniciusSavianDeArruda"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center gap-2 px-3 font-hero text-[0.9rem] font-medium text-[#F4F6FB] transition duration-200 hover:-translate-y-px hover:text-[#9AACFF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9AACFF]"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-md border border-white/[0.08] px-4 font-hero text-[0.9rem] font-medium text-[#F4F6FB] transition duration-200 hover:-translate-y-px hover:border-white/[0.14] hover:text-[#9AACFF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9AACFF]"
                 >
                   <GithubIcon size={17} />
                   GitHub
@@ -76,7 +76,7 @@ export default function Hero() {
                   href="https://www.linkedin.com/in/arrudavinicius/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center gap-2 px-3 font-hero text-[0.9rem] font-medium text-[#F4F6FB] transition duration-200 hover:-translate-y-px hover:text-[#9AACFF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9AACFF]"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-md border border-white/[0.08] px-4 font-hero text-[0.9rem] font-medium text-[#F4F6FB] transition duration-200 hover:-translate-y-px hover:border-white/[0.14] hover:text-[#9AACFF] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#9AACFF]"
                 >
                   <LinkedinIcon size={17} />
                   LinkedIn

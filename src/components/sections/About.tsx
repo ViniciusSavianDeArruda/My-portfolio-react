@@ -5,7 +5,7 @@ const PROFILE_IMAGE = "/About-eu.jpeg";
 const METADATA = [
   { label: "LOCALIZAÇÃO", value: "Santa Maria — RS, Brasil" },
   { label: "FORMAÇÃO", value: "Sistemas de Informação — UFN" },
-  { label: "FOCO", value: "Desenvolvimento Full Stack" },
+  { label: "FOCO", value: "Full Stack" },
 ];
 
 const WORK_PRINCIPLES = [
@@ -59,23 +59,10 @@ export default function About() {
         },
       };
 
-  const dividerVariants: Variants = shouldReduceMotion
-    ? {
-        hidden: { scaleX: 1 },
-        show: { scaleX: 1 },
-      }
-    : {
-        hidden: { scaleX: 0 },
-        show: {
-          scaleX: 1,
-          transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
-        },
-      };
-
   return (
     <section
       id="about"
-      className="about-ambient border-t border-white/[0.05] px-[clamp(1.5rem,5vw,4rem)] py-20 md:py-28"
+      className="about-ambient px-[clamp(1.5rem,5vw,4rem)] py-20 md:py-28"
       aria-labelledby="about-title"
     >
       <motion.div
@@ -131,7 +118,7 @@ export default function About() {
                 viewport={{ once: true, amount: 0.05 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 style={{ transformOrigin: "bottom" }}
-                className="absolute inset-0 z-10 bg-[#0A0D14]"
+                className="absolute inset-0 z-10 bg-[#0A0D14] motion-safe:animate-[fallback-reveal_0s_2s_forwards]"
               />
             )}
             <motion.figcaption
@@ -152,34 +139,28 @@ export default function About() {
           <div className="max-w-[620px]">
             <motion.div
               variants={itemVariants}
-              className="space-y-5 font-hero text-[clamp(1rem,1.3vw,1.08rem)] leading-[1.7] text-[#969EAD]"
+              className="space-y-5 font-hero text-[clamp(1rem,1.3vw,1.08rem)] leading-[1.7] text-[#A6ACB8]"
             >
               <p>
-                Sou estudante de Sistemas de Informação e desenvolvedor de
-                software, com foco na construção de aplicações web modernas.
+                Estudo Sistemas de Informação na UFN e construo aplicações web
+                completas — do frontend à API, do banco ao deploy. Meu trabalho
+                mais recente é o Facilita OAB, uma plataforma de estudos para a
+                prova da OAB, com React, FastAPI e PostgreSQL.
               </p>
               <p>
-                Trabalho principalmente com React, TypeScript, Node.js e Python,
-                buscando desenvolver produtos com interfaces bem pensadas,
-                arquitetura organizada e uma boa experiência para quem usa.
-              </p>
-              <p>
-                Ao longo da graduação e dos meus projetos, venho aprofundando
-                conhecimentos em desenvolvimento full stack, APIs, bancos de
-                dados, cloud e segurança, sempre buscando evoluir tecnicamente e
-                transformar ideias em produtos úteis.
+                Me interesso por entender o produto inteiro, não só a parte que
+                coube pra mim. Gosto de pensar na arquitetura antes de abrir o
+                editor, e prefiro um código que outra pessoa consiga ler a um
+                código que só eu entendo.
               </p>
             </motion.div>
 
             <motion.dl
               variants={itemVariants}
-              className="mt-10 grid divide-y divide-white/[0.07] border-y border-white/[0.07] sm:grid-cols-3 sm:divide-x sm:divide-y-0"
+              className="mt-10 grid gap-y-6 sm:grid-cols-[1fr_1.4fr_1.1fr] sm:gap-x-8"
             >
               {METADATA.map(({ label, value }) => (
-                <div
-                  key={label}
-                  className="min-w-0 py-5 sm:px-5 sm:first:pl-0 sm:last:pr-0"
-                >
+                <div key={label} className="min-w-0">
                   <dt className="font-mono text-[0.65rem] tracking-[0.12em] text-[#9AACFF]">
                     {label}
                   </dt>
@@ -210,36 +191,28 @@ export default function About() {
               >
                 O QUE GUIA MEU CÓDIGO
               </motion.p>
-              <motion.ol
+              <motion.div
                 variants={{
                   hidden: {},
                   show: {
                     transition: {
-                      staggerChildren: shouldReduceMotion ? 0 : 0.08,
+                      staggerChildren: shouldReduceMotion ? 0 : 0.1,
                     },
                   },
                 }}
-                className="mt-4 border-t border-white/[0.07]"
+                className="mt-6 grid gap-6 sm:grid-cols-3 sm:gap-8"
               >
                 {WORK_PRINCIPLES.map((principle, index) => (
-                  <motion.li
-                    key={principle}
-                    variants={principleItemVariants}
-                    className="group relative flex items-center gap-4 py-4"
-                  >
-                    <span className="font-mono text-[0.68rem] tracking-[0.08em] text-[#5B7CFF]">
+                  <motion.div key={principle} variants={principleItemVariants}>
+                    <span className="block font-hero text-[1.5rem] font-semibold leading-none tracking-[-0.04em] text-[#5B7CFF]">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <span className="font-hero text-[0.95rem] text-[#D7DBE5] transition-colors duration-200 group-hover:text-[#F4F6FB]">
+                    <p className="mt-3 font-hero text-[0.95rem] leading-[1.5] text-[#D7DBE5]">
                       {principle}
-                    </span>
-                    <motion.span
-                      variants={dividerVariants}
-                      className="absolute bottom-0 left-0 h-px w-full origin-left bg-white/[0.07]"
-                    />
-                  </motion.li>
+                    </p>
+                  </motion.div>
                 ))}
-              </motion.ol>
+              </motion.div>
             </motion.div>
           </div>
         </div>
