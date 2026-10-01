@@ -1,7 +1,7 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useState, type ComponentType } from "react";
 import useActiveSection from "../../hooks/useActiveSection";
-import { CodeIcon, HomeIcon, MailIcon, ProjectsIcon, UserIcon } from "./icons";
+import { CodeIcon, HomeIcon, MailIcon, ProjectsIcon, UserIcon } from "../ui/icons";
 
 interface NavItem {
   id: "home" | "about" | "skills" | "projects" | "contact";

@@ -1,6 +1,6 @@
 import { motion, useReducedMotion, type Variants } from "motion/react";
 import { CONTACT_LINKS } from "../../data";
-import { GithubIcon, LinkedinIcon, MailIcon } from "./icons";
+import { GithubIcon, LinkedinIcon, MailIcon } from "../ui/icons";
 
 const EMAIL = "arrudavinicius283@gmail.com";
 const NAVIGATION_LINKS = [
