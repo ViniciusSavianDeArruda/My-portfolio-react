@@ -1,224 +1,374 @@
-# Meu Portfolio Pessoal
+# Meu Portfólio Pessoal
 
-Portfólio pessoal desenvolvido com **React**, **TypeScript** e **Tailwind CSS**, com identidade visual no tema **hacker terminal** — fundo escuro, verde neon como acento e efeito Matrix no Hero.
+Portfólio pessoal desenvolvido com **React**, **TypeScript**, **Tailwind CSS** e **Vite**, com foco em apresentação profissional, experiência do usuário, responsividade e uma identidade visual editorial em tons escuros com acentos em azul cobalto.
+
+O projeto apresenta minha experiência, tecnologias, projetos e formas de contato em uma interface moderna, responsiva e com animações sutis.
+
+## Demonstração
+
+- **Site:** [viniciusarruda.dev](https://viniciusarruda.dev/)
+- **GitHub:** [ViniciusSavianDeArruda](https://github.com/ViniciusSavianDeArruda)
+- **LinkedIn:** [arrudavinicius](https://linkedin.com/in/arrudavinicius)
 
 ---
 
 ## Tecnologias
 
-- **React 18** — biblioteca de interface
-- **TypeScript** — tipagem estática
-- **Tailwind CSS v3** — estilização utilitária
-- **Vite** — bundler e servidor de desenvolvimento
-- **ESLint + Prettier** — lint e formatação
-- **Simple Icons** (CDN) — ícones das tecnologias na seção de habilidades
-- **Google Fonts** — fontes Orbitron e Share Tech Mono
+- **React 18**
+- **TypeScript**
+- **Tailwind CSS v3**
+- **Vite**
+- **Motion / motion/react**
+- **ESLint**
+- **Prettier**
+- **Simple Icons**
+- **Google Fonts**
+  - Manrope
+  - Share Tech Mono
 
 ---
 
 ## Estrutura do Projeto
 
-```
-portfolio/
+```text
+My-portfolio-react/
 ├── public/
-│   ├── projects/            # imagens dos cards de projeto
+│   ├── images/
+│   │   ├── profile/
+│   │   │   └── about-eu.jpeg
+│   │   └── projects/
+│   │       ├── facilita-oab.png
+│   │       ├── fitnnes-ai.png
+│   │       └── museu-treze-de-maio.png
 │   ├── robots.txt
 │   └── sitemap.xml
+│
 ├── src/
 │   ├── components/
-│   │   ├── sections/        # "capítulos" da página, cada um usado 1x
+│   │   ├── hero/
+│   │   │   ├── GeometricBackground.tsx
+│   │   │   └── TechMarquee.tsx
+│   │   │
+│   │   ├── layout/
+│   │   │   ├── Footer.tsx
+│   │   │   └── Navbar.tsx
+│   │   │
+│   │   ├── motion/
+│   │   │   └── stagger-reveal.tsx
+│   │   │
+│   │   ├── projects/
+│   │   │   ├── ProjectDetailsDialog.tsx
+│   │   │   └── ProjectShowcase.tsx
+│   │   │
+│   │   ├── sections/
+│   │   │   ├── About.tsx
+│   │   │   ├── Contact.tsx
 │   │   │   ├── Hero.tsx
-│   │   │   ├── About.tsx    # bio + status + formação (painel de cards)
-│   │   │   ├── Skills.tsx
 │   │   │   ├── Projects.tsx
-│   │   │   └── Contact.tsx
-│   │   └── ui/               # peças reutilizáveis / estrutura da interface
-│   │       ├── Navbar.tsx
-│   │       ├── Footer.tsx
+│   │   │   └── Skills.tsx
+│   │   │
+│   │   └── ui/
 │   │       ├── BackToTop.tsx
-│   │       ├── MatrixCanvas.tsx
-│   │       ├── SectionLabel.tsx
-│   │       ├── Card.tsx
-│   │       ├── FormationCard.tsx
 │   │       └── icons.tsx
+│   │
 │   ├── data/
-│   │   └── index.ts          # todos os dados do portfólio (edite aqui!)
+│   │   └── index.ts
+│   │
 │   ├── hooks/
-│   │   ├── useTypewriter.ts
 │   │   └── useActiveSection.ts
+│   │
 │   ├── types/
-│   │   └── index.ts          # interfaces (Project, Skill, ContactLink, AboutRow...)
+│   │   └── index.ts
+│   │
 │   ├── App.tsx
-│   ├── main.tsx
-│   └── index.css             # entrada do Tailwind + classes custom
+│   ├── index.css
+│   └── main.tsx
+│
+├── .github/
+├── eslint.config.js
 ├── index.html
+├── package.json
+├── pnpm-lock.yaml
+├── postcss.config.js
 ├── tailwind.config.ts
 ├── tsconfig.json
-├── vite.config.ts
-├── eslint.config.js
-└── package.json
+└── vite.config.ts
 ```
+
+### Organização
+
+A estrutura foi dividida por responsabilidade:
+
+- `components/sections` — principais seções da página.
+- `components/layout` — elementos globais da interface, como Navbar e Footer.
+- `components/hero` — componentes exclusivos da seção Hero.
+- `components/projects` — componentes relacionados à apresentação e aos detalhes dos projetos.
+- `components/motion` — componentes reutilizáveis de animação.
+- `components/ui` — componentes genéricos da interface.
+- `data` — dados reutilizados pelas seções.
+- `hooks` — hooks customizados.
+- `types` — tipos e interfaces TypeScript.
+
+A organização foi mantida propositalmente simples para facilitar a manutenção e a evolução do projeto.
 
 ---
 
-## Como rodar localmente
+## Como Rodar Localmente
 
 ### Pré-requisitos
 
-- Node.js 18+
-- [pnpm](https://pnpm.io/) (o projeto fixa a versão em `packageManager` no `package.json`)
+- [Node.js 18+](https://nodejs.org/)
+- [pnpm](https://pnpm.io/)
 
 ### Instalação
 
 ```bash
-# Clone o repositório
 git clone https://github.com/ViniciusSavianDeArruda/My-portfolio-react.git
-
-# Entre na pasta
 cd My-portfolio-react
-
-# Instale as dependências
 pnpm install
-
-# Inicie o servidor de desenvolvimento
 pnpm dev
 ```
 
-O projeto estará disponível em `http://localhost:5173`
+O projeto ficará disponível em:
 
-### Scripts disponíveis
-
-```bash
-pnpm dev       # servidor de desenvolvimento
-pnpm build     # build de produção (roda tsc + vite build)
-pnpm preview   # serve o build localmente
-pnpm lint      # ESLint
-pnpm format    # Prettier (formata o projeto inteiro)
+```text
+http://localhost:5173
 ```
-
-Um workflow de CI (`.github/workflows/ci.yml`) roda `lint` e `build` a cada push/PR.
 
 ---
 
-## Como personalizar
+## Scripts Disponíveis
 
-Todos os dados do portfólio estão centralizados em **`src/data/index.ts`**. Edite esse arquivo para atualizar o conteúdo sem precisar mexer nos componentes — os tipos ficam em `src/types/index.ts`.
+```bash
+pnpm dev      # inicia o servidor de desenvolvimento
+pnpm build    # gera o build de produção
+pnpm preview  # executa localmente o build de produção
+pnpm lint     # executa o ESLint
+pnpm format   # formata o projeto com Prettier
+```
+
+O projeto também possui um workflow de CI em `.github/workflows/ci.yml`, responsável por validar o código em pushes e pull requests.
+
+---
+
+## Seções do Portfólio
+
+### Hero
+
+Apresentação principal do portfólio, com:
+
+- nome e especialidade;
+- chamadas para projetos e redes profissionais;
+- background geométrico;
+- marquee de tecnologias;
+- animações de entrada com `motion/react`.
+
+### Sobre
+
+Seção editorial com:
+
+- apresentação pessoal;
+- foto;
+- informações acadêmicas e profissionais;
+- princípios que orientam o desenvolvimento.
+
+### Stack
+
+Tecnologias utilizadas nos projetos, organizadas por categoria:
+
+- Frontend;
+- Backend;
+- Banco de dados;
+- DevOps e ferramentas.
 
 ### Projetos
+
+Os projetos são apresentados em formato visual com screenshots.
+
+Cada projeto pode abrir um modal com:
+
+- descrição detalhada;
+- principais funcionalidades;
+- tecnologias utilizadas;
+- galeria de imagens;
+- link para o GitHub;
+- demonstração, quando disponível.
+
+### Contato
+
+Seção de contato com:
+
+- e-mail;
+- GitHub;
+- LinkedIn;
+- opção para copiar o endereço de e-mail.
+
+### Footer
+
+Encerramento do portfólio com:
+
+- identidade visual;
+- navegação;
+- links sociais;
+- localização;
+- copyright.
+
+---
+
+## Como Adicionar Projetos
+
+Os projetos são mantidos em:
+
+```text
+src/data/index.ts
+```
+
+Exemplo simplificado:
 
 ```ts
 export const PROJECTS: Project[] = [
   {
     id: "01",
     name: "Nome do Projeto",
-    desc: "Descrição do projeto...",
-    tech: ["React", "Node.js", "PostgreSQL"],
-    status: "PRODUCTION", // texto livre do badge (ex: PRODUCTION, OPEN SOURCE)
-    statusColor: "#00FF41", // cor do badge
-    github: "https://github.com/seuuser/projeto",
-    demo: "https://seuprojeto.com", // opcional
-    photo: "/projects/screenshot.png", // imagem do card, em public/projects/
+    shortDesc: "Descrição curta do projeto.",
+    fullDesc: "Descrição completa do projeto.",
+    tech: ["React", "TypeScript", "Node.js"],
+    type: "Aplicação Web",
+    github: "https://github.com/usuario/projeto",
+    demo: "https://projeto.com",
+    images: ["/images/projects/projeto.png"],
   },
 ];
 ```
 
-### Habilidades
+Os screenshots devem ser adicionados em:
 
-Adicione ou remova tecnologias usando os slugs do [Simple Icons](https://simpleicons.org). Se o ícone for escuro/preto por padrão (some no fundo escuro), adicione o slug em `LIGHT_OVERRIDE_ICONS` no topo de `src/components/sections/Skills.tsx`:
-
-```ts
-{ name: "React", icon: "react" },
-{ name: "Next.js", icon: "nextdotjs" },
+```text
+public/images/projects/
 ```
 
-### Contato
+---
 
-```ts
-export const CONTACT_LINKS: ContactLink[] = [
-  {
-    label: "GITHUB",
-    value: "github.com/seuuser",
-    href: "https://github.com/seuuser",
-  },
-  {
-    label: "LINKEDIN",
-    value: "linkedin.com/in/seuuser",
-    href: "https://linkedin.com/in/seuuser",
-  },
-];
+## Contato e Dados Centralizados
+
+Os principais links de contato são centralizados em:
+
+```text
+src/data/index.ts
 ```
 
-### Dados pessoais / Status
-
-Edite `ABOUT_ROWS` em `src/data/index.ts` para atualizar nome, localização, especialidade etc. O campo opcional `dot` (`"amber"` ou `"blue"`) controla a cor da bolinha na frente de cada linha no card de Status; sem `dot`, usa o verde padrão.
-
-### Hero
-
-Em `src/components/sections/Hero.tsx`, troque o nome, os textos das linhas de digitação e as URLs do GitHub/LinkedIn nos botões de CTA.
+Essa abordagem evita a duplicação de URLs entre a Navbar, a seção Contact e o Footer.
 
 ---
 
 ## Identidade Visual
 
-O verde neon é usado como **acento** (títulos, prompts, links, badges, hover), não como cor de base — bordas, divisores e texto secundário usam cinza neutro.
+O portfólio utiliza uma estética **dark editorial** e técnica.
 
-| Elemento              | Valor                              |
-| --------------------- | ---------------------------------- |
-| Verde neon (destaque) | `#00FF41`                          |
-| Verde secundário      | `#00AA2A`                          |
-| Fundo                 | `#080808`                          |
-| Fundo de cards        | `#0a0a0a`                          |
-| Bordas / divisores    | tons de cinza neutro (`neutral-*`) |
-| Texto corrido         | cinza claro (`neutral-200`)        |
-| Fonte display         | Orbitron (títulos e logo)          |
-| Fonte mono            | Share Tech Mono (todo o resto)     |
+| Elemento | Valor |
+| --- | --- |
+| Fundo principal | `#07080B` |
+| Surface secundária | `#0A0D14` |
+| Texto principal | `#F4F6FB` |
+| Texto secundário | `#9096A3` |
+| Accent | `#5B7CFF` |
+| Accent hover | `#7691FF` |
+| Fonte principal | Manrope |
+| Fonte técnica | Share Tech Mono |
 
-As cores ficam centralizadas em `tailwind.config.ts` (`theme.extend.colors`) — evite usar hex direto no JSX quando já existir um token equivalente.
+A fonte mono é utilizada apenas em labels e pequenos metadados.
+
+---
+
+## Animações
+
+As animações utilizam `motion/react`.
+
+O projeto prioriza:
+
+- reveals sutis;
+- stagger curto;
+- microinterações;
+- transições rápidas;
+- suporte a `prefers-reduced-motion`.
+
+Não são utilizadas animações contínuas ou efeitos excessivos.
 
 ---
 
 ## Responsividade
 
-- **Mobile** — menu hamburger com overlay fullscreen animado
-- **Desktop** — navegação horizontal, projetos em lista alternada, painel do About em cards lado a lado
+O layout foi desenvolvido com foco em desktop e mobile.
+
+Principais comportamentos:
+
+- Navbar adaptada a diferentes tamanhos de tela;
+- grids de projetos responsivos;
+- tipografia fluida;
+- modal de projetos adaptado para dispositivos móveis;
+- Footer reorganizado em telas menores;
+- áreas de interação adequadas para toque.
 
 ---
 
-## Seções
+## Acessibilidade
 
-| Seção        | Descrição                                                                                |
-| ------------ | ---------------------------------------------------------------------------------------- |
-| **Home**     | Hero com efeito Matrix, typing animation e botões de CTA                                 |
-| **About**    | Bio, status (localização, disponibilidade etc.) e formação acadêmica, em painel de cards |
-| **Skills**   | Ícones das tecnologias agrupados por categoria                                           |
-| **Projects** | Cards com imagem, descrição, stack e links                                               |
-| **Contact**  | E-mail e links para redes sociais                                                        |
+O projeto inclui:
+
+- `focus-visible`;
+- navegação por teclado;
+- labels acessíveis;
+- suporte a `prefers-reduced-motion`;
+- contraste adequado;
+- targets clicáveis confortáveis;
+- modal com comportamento acessível.
 
 ---
 
 ## Deploy
 
-### Vercel (recomendado)
+O projeto está publicado em:
 
-1. Suba o projeto para o GitHub
-2. Acesse [vercel.com](https://vercel.com) e importe o repositório
-3. A Vercel detecta o Vite automaticamente — clique em **Deploy**
+[viniciusarruda.dev](https://viniciusarruda.dev/)
 
-Deploy atual: https://viniciusarruda.dev/
+Também pode ser publicado facilmente em serviços compatíveis com Vite, como:
 
-### Netlify
+- [Vercel](https://vercel.com/)
+- [Netlify](https://www.netlify.com/)
+
+### Build de Produção
 
 ```bash
 pnpm build
-# Arraste a pasta /dist para netlify.com/drop
 ```
+
+O resultado será gerado na pasta:
+
+```text
+dist/
+```
+
+---
+
+## CI
+
+O workflow localizado em:
+
+```text
+.github/workflows/ci.yml
+```
+
+executa validações automáticas para ajudar a manter a qualidade do projeto em pushes e pull requests.
 
 ---
 
 ## Licença
 
-Este projeto é de uso pessoal. Sinta-se livre para usar como referência e adaptá-lo ao seu próprio portfólio.
+Este projeto é de uso pessoal e pode ser utilizado como referência para estudos e desenvolvimento de portfólios próprios.
 
 ---
 
-Desenvolvido por **Vinicius Arruda** — [github.com/ViniciusSavianDeArruda](https://github.com/ViniciusSavianDeArruda)
+Desenvolvido por **Vinicius Arruda**.
+
+- [GitHub](https://github.com/ViniciusSavianDeArruda)
+- [LinkedIn](https://linkedin.com/in/arrudavinicius)
