@@ -2,9 +2,9 @@ import {
   StaggerReveal,
   StaggerRevealHeadline,
   StaggerRevealItem,
-} from "../motion-ui/stagger-reveal";
-import GeometricBackground from "../ui/GeometricBackground";
-import TechMarquee from "../ui/TechMarquee";
+} from "../motion/stagger-reveal";
+import GeometricBackground from "../hero/GeometricBackground";
+import TechMarquee from "../hero/TechMarquee";
 import { GithubIcon, LinkedinIcon, ProjectsIcon } from "../ui/icons";
 
 export default function Hero() {
